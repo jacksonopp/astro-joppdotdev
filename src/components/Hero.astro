@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Button from "./Button.svelte";
+
+interface Props {
+  heroContent: CollectionEntry<"hero">;
+  cta: boolean;
+}
+
+const { heroContent, cta } = Astro.props;
+
+const { Content } = await heroContent.render();
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="w-full bg-dark-900 text-white py-16 px-20 grid lg:grid-cols-[3fr,2fr]"
+>
+  <div class="grid gap-8">
+    <div
+      class="prose prose-invert prose-h1:text-7xl prose-headings:mb-[0.5em] prose-p:text-xl"
+    >
+      <Content />
+    </div>
+    {cta && <Button>Contact me</Button>}
+  </div>
+</section>
