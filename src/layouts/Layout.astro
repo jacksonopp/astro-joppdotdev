@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.svelte";
 export interface Props {
   title: string;
@@ -21,5 +22,6 @@ const currentPath = pathname.slice(1);
   <body>
     <Navigation activePath={currentPath} />
     <slot />
+    <Footer />
   </body>
 </html>

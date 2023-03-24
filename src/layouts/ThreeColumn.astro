@@ -1,0 +1,25 @@
+---
+import SectionTitle from "../components/SectionTitle.svelte";
+
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<section
+  aria-labelledby={id}
+  class="grid lg:grid-cols-3 md:grid-cols-2 p-16 gap-x-4 justify-items-center"
+>
+  <SectionTitle
+    classes="lg:col-span-3 md:col-span-2 justify-self-start"
+    id={id}
+  >
+    {title}
+  </SectionTitle>
+  <slot name="col1" />
+  <slot name="col2" />
+  <slot name="col3" />
+</section>

@@ -1,0 +1,31 @@
+---
+import SectionTitle from "./SectionTitle.svelte";
+
+import { Image } from "astro:assets";
+import linkedin from "../assets/LI-in-Bug.png";
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div
+    class="grid sm:grid-cols-2 lg:grid-cols-3 bg-dark-800 text-white p-8 justify-items-center"
+  >
+    <div>
+      <SectionTitle theme="accent" dark offset>Socials</SectionTitle>
+      <a href="https://www.linkedin.com/in/jacksonopp/" target="_blank">
+        <Image src={linkedin} alt="LinkdedIN" height={20} />
+        <span class="sr-only">Linkedin</span>
+      </a>
+    </div>
+    <div>
+      <SectionTitle theme="accent" dark offset>Links</SectionTitle>
+    </div>
+    <div>
+      <SectionTitle theme="accent" dark offset>Contact Me</SectionTitle>
+    </div>
+  </div>
+  <div class="sm:col-span-2 lg:col-span-3 bg-dark-900 text-white p-8">
+    <div>&copy; {year} | Jackson Oppenheim</div>
+  </div>
+</footer>

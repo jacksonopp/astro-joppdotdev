@@ -2,11 +2,85 @@
 import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+
+import { Image } from "astro:assets";
+import ThreeColumn from "../layouts/ThreeColumn.astro";
+import computerPng from "../assets/computer.png";
+import pearsonLogo from "../assets/pearson-logo.png";
+import onvueLogo from "../assets/onvue-logo.png";
+import sdgLogo from "../assets/sdg-logo.png";
+import virtuwellLogo from "../assets/virtuwell-nohp.png";
+import hpLogo from "../assets/hp-logo.png";
+import SectionTitle from "../components/SectionTitle.svelte";
+import Contact from "../components/Contact.astro";
+
 const hero = await getEntryBySlug("hero", "hompage");
 ---
 
 <Layout title="Jackson Oppenheim, UX Developer">
   <main>
     <Hero heroContent={hero} cta />
+
+    <ThreeColumn title="About Me" id="about-me">
+      <div slot="col1" class="prose">
+        <h3 class="text-3xl font-bold mb-[0.5em]">
+          UX Development Expertise and Passion
+        </h3>
+        <p>
+          I'm a dedicated UX developer with a passion for creating exceptional
+          digital experiences that delight users and drive business success.
+          With over 5 years of experience in the field, I specialize in creating
+          engaging and intuitive user interfaces that meet the needs of both
+          end-users and stakeholders.
+        </p>
+      </div>
+      <Image src={computerPng} alt="A computer" slot="col2" />
+      <div slot="col3" class="prose">
+        <p>
+          My expertise spans across a range of industries, including healthcare,
+          e-commerce, finance, and education. I have a deep understanding of
+          user behavior and constantly stay up-to-date with the latest trends
+          and technologies in UX development.
+        </p>
+        <p>
+          Collaboration is at the heart of my approach. I believe that great
+          user experiences are the result of close collaboration between
+          designers, developers, and stakeholders. I work closely with all team
+          members to ensure that every aspect of the user interface is optimized
+          for success.
+        </p>
+      </div>
+    </ThreeColumn>
+    <section aria-label="companies" class="bg-dark-400">
+      <div class="px-16 pt-8">
+        <SectionTitle>Clients I've Worked With</SectionTitle>
+      </div>
+      <div class="flex justify-evenly py-16">
+        <Image src={pearsonLogo} alt="OnVUE" height={64} class="h-16" />
+        <Image
+          src={sdgLogo}
+          alt="Solution Design Group"
+          height={64}
+          class="h-16"
+        />
+        <Image
+          src={virtuwellLogo}
+          alt="Virtuwell"
+          height={64}
+          class="grayscale h-16"
+        />
+        <Image src={onvueLogo} alt="OnVUE" height={64} class="h-16" />
+        <Image
+          src={hpLogo}
+          alt="Virtuwell"
+          height={64}
+          class="grayscale h-16"
+        />
+      </div>
+    </section>
+    <section class="p-16" aria-labelledby="contact">
+      <SectionTitle id="contact">Contact Me</SectionTitle>
+      <Contact />
+    </section>
   </main>
 </Layout>
