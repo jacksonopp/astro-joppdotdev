@@ -5,7 +5,7 @@ import Hero from "../components/Hero.astro";
 
 const { frontmatter } = Astro.props;
 
-const hero = await getEntryBySlug("hero", frontmatter.slug);
+const hero = await getEntryBySlug("hero", frontmatter.oneword);
 ---
 
 <Layout title={frontmatter.title}>

@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+const articles = await getCollection("blog");
+---
+
+<Layout title="Blog | Jackson Oppenheim">
+  <main class="p-16">
+    <h1 class="text-4xl text-primary-900 font-bold">Blog Posts</h1>
+    <ul class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+      {
+        articles.map((post) => {
+          return (
+            post.slug !== "notfound" && (
+              <li class="w-64">
+                <a href={"/blog/" + post.slug}>
+                  <span class="text-blue-900 font-semibold text-lg">
+                    {post.data.title}
+                  </span>{" "}
+                  <p class="text-sm">{post.data.published}</p>
+                  <p>{post.data.summary}</p>
+                </a>
+              </li>
+            )
+          );
+        })
+      }
+    </ul>
+  </main>
+</Layout>

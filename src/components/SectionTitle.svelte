@@ -8,7 +8,7 @@
 </script>
 
 <h2
-  class="font-bold text-xl uppercase relative left-10 w-fit section-title mb-[0.5em] z-0 {classes}"
+  class="font-bold text-xl uppercase relative w-fit section-title mb-[0.5em] z-0 {classes}"
   class:text-primary-900={primary}
   class:text-primary-400={primary && dark}
   class:text-accent-700={!primary && !dark}
@@ -17,7 +17,8 @@
   class:section-title--accent--dark={!primary && dark}
   class:section-title--primary--light={primary && !dark}
   class:section-title--primary--dark={primary && dark}
-  class:left-0={offset}
+  class:-left-8={offset}
+  class:left-10={!offset}
   {id}
 >
   <slot />

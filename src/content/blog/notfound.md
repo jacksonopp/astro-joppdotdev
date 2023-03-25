@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPost.astro
-slug: notfound
+oneword: notfound
 ---
 
 no article found

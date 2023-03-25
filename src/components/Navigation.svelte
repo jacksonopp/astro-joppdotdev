@@ -18,25 +18,25 @@
       </li>
       <li
         class="hover:text-gray-800 transition-[text-decoration-line] hover:underline duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath === "about"}
+        class:text-primary-700={activePath.includes("about")}
       >
         <a href="/about">About</a>
       </li>
       <li
         class="hover:text-gray-800 transition-[text-decoration-line] hover:underline duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath === "portfolio"}
+        class:text-primary-700={activePath.includes("portfolio")}
       >
         <a href="/portfolio">Portfolio</a>
       </li>
       <li
         class="hover:text-gray-800 transition-[text-decoration-line] hover:underline duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath === "blog"}
+        class:text-primary-700={activePath.includes("blog")}
       >
         <a href="/blog">Blog</a>
       </li>
       <li
         class="hover:text-gray-800 transition-[text-decoration-line] hover:underline duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath === "contact"}
+        class:text-primary-700={activePath.includes("contact")}
       >
         <a href="/blog">Contact</a>
       </li>
