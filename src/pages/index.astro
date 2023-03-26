@@ -19,7 +19,7 @@ const hero = await getEntryBySlug("hero", "hompage");
 
 <Layout title="Jackson Oppenheim, UX Developer">
   <main>
-    <Hero heroContent={hero} cta />
+    <Hero heroContent={hero} cta twoColumns={true} />
 
     <ThreeColumn title="About Me" id="about-me">
       <div slot="col1" class="prose prose-slate">

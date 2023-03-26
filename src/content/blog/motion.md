@@ -4,6 +4,7 @@ title: The Importance of Motion in User Experience Design
 oneword: motion
 summary: Motion is a crucial aspect of user experience design that can greatly enhance the user's experience. How motion can make the experience more engaging, intuitive, and memorable?
 published: 03/24/2023
+heroSide: left
 ---
 
 # The Importance of Motion in User Experience Design

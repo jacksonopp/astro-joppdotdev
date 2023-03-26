@@ -1,0 +1,22 @@
+---
+import { getEntryBySlug } from "astro:content";
+import Layout from "./Layout.astro";
+import Hero from "../components/Hero.astro";
+import Contact from "../components/Contact.astro";
+import SectionTitle from "../components/SectionTitle.svelte";
+
+const aboutHero = await getEntryBySlug("hero", "about");
+---
+
+<Layout title="About | Jackson Oppenheim">
+  <Hero heroContent={aboutHero} cta={false} twoColumns={false} />
+  <div
+    class="prose prose-headings:text-primary-900 mx-auto py-16 md:px-0 px-8 xl:max-w-4xl lg:max-w-2xl md:max-w-xl max-w-lg"
+  >
+    <slot />
+  </div>
+  <section class="bg-dark-600 p-16">
+    <SectionTitle dark>Contact Me</SectionTitle>
+    <Contact dark={true} />
+  </section>
+</Layout>

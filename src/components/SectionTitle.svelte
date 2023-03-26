@@ -4,12 +4,13 @@
   export let theme: "primary" | "accent" = "primary";
   export let dark = false;
   export let offset = false;
+  export let oneline = false;
   $: primary = theme === "primary";
 </script>
 
 <h2
-  class="font-bold text-xl uppercase relative w-fit section-title mb-[0.5em] z-0 {classes}"
-  class:text-primary-900={primary}
+  class="font-bold text-xl uppercase relative w-fit m-0 section-title mb-[0.5em] z-0 {classes}"
+  class:text-primary-900={primary && !dark}
   class:text-primary-400={primary && dark}
   class:text-accent-700={!primary && !dark}
   class:text-accent-400={!primary && dark}
@@ -17,6 +18,7 @@
   class:section-title--accent--dark={!primary && dark}
   class:section-title--primary--light={primary && !dark}
   class:section-title--primary--dark={primary && dark}
+  class:section-title--oneline={oneline}
   class:-left-8={offset}
   class:left-10={!offset}
   {id}
@@ -26,7 +28,7 @@
 
 <style>
   /* Primary Light */
-  .section-title::before {
+  .section-title:not(.section-title--oneline)::before {
     @apply h-1 w-8 absolute top-3 -left-10 bg-primary-900;
     content: "";
   }
@@ -36,7 +38,7 @@
   }
 
   /* Primary Dark */
-  .section-title--primary--dark::before {
+  .section-title--primary--dark:not(.section-title--oneline)::before {
     @apply h-1 w-8 absolute top-3 -left-10 bg-primary-400;
     content: "";
   }
@@ -46,7 +48,7 @@
   }
 
   /* Accent Light */
-  .section-title--accent--light::before {
+  .section-title--accent--light:not(.section-title--oneline)::before {
     @apply h-1 w-8 absolute top-3 -left-10 bg-accent-700;
     content: "";
   }
@@ -56,7 +58,7 @@
   }
 
   /* Accent Dark */
-  .section-title--accent--dark::before {
+  .section-title--accent--dark:not(.section-title--oneline)::before {
     @apply h-1 w-8 absolute top-3 -left-10 bg-accent-400;
     content: "";
   }

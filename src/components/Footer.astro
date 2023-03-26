@@ -1,31 +1,57 @@
 ---
 import SectionTitle from "./SectionTitle.svelte";
 
-import { Image } from "astro:assets";
-import linkedin from "../assets/LI-in-Bug.png";
+import { Icon } from "astro-icon";
 
 const year = new Date().getFullYear();
 ---
 
 <footer>
-  <div
-    class="grid sm:grid-cols-2 lg:grid-cols-3 bg-dark-800 text-white p-8 justify-items-center"
-  >
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 bg-dark-800 text-white p-8">
     <div>
-      <SectionTitle theme="accent" dark offset>Socials</SectionTitle>
-      <a href="https://www.linkedin.com/in/jacksonopp/" target="_blank">
-        <Image src={linkedin} alt="LinkdedIN" height={20} />
-        <span class="sr-only">Linkedin</span>
-      </a>
+      <SectionTitle theme="accent" dark>About</SectionTitle>
     </div>
     <div>
-      <SectionTitle theme="accent" dark offset>Links</SectionTitle>
+      <SectionTitle theme="accent" dark>Links</SectionTitle>
     </div>
-    <div>
-      <SectionTitle theme="accent" dark offset>Contact Me</SectionTitle>
+    <div class="flex flex-col gap-8">
+      <div>
+        <SectionTitle theme="accent" dark>Contact Me</SectionTitle>
+        <ul class="prose prose-invert">
+          <li><b>Phone:</b> <a href="tel:+14406656551">440.665.6551</a></li>
+          <li><b>Email:</b> <a href="mailto:me@jopp.dev">me@jopp.dev</a></li>
+        </ul>
+      </div>
+      <div>
+        <SectionTitle theme="accent" dark>Socials</SectionTitle>
+        <div class="flex">
+          <a
+            href="https://www.linkedin.com/in/jacksonopp/"
+            target="_blank"
+            class="hover:text-blue-400"
+          >
+            <Icon name="mdi:linkedin" />
+            <span class="sr-only">Linkedin</span>
+          </a>
+          <a
+            href="https://github.com/jacksonopp"
+            target="_blank"
+            class="hover:text-blue-400"
+          >
+            <Icon name="mdi:github" />
+            <span class="sr-only">Github</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="sm:col-span-2 lg:col-span-3 bg-dark-900 text-white p-8">
     <div>&copy; {year} | Jackson Oppenheim</div>
   </div>
 </footer>
+
+<style>
+  [astro-icon] {
+    @apply w-12 h-12;
+  }
+</style>

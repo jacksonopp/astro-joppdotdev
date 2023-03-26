@@ -1,5 +1,93 @@
 ---
+import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import SectionTitle from "../components/SectionTitle.svelte";
+
+import { Image } from "astro:assets";
+import wheelchair from "../assets/wheelchair.png";
+import uiSketch from "../assets/ui-sketch.png";
+import threeChar from "../assets/3char.png";
+import Contact from "../components/Contact.astro";
+
+const about = await getEntryBySlug("about", "about");
+const { Content: AboutContent } = await about.render();
+const abilities = await getEntryBySlug("about", "what-can-i-do");
+const { Content: AbilitiesContent } = await abilities.render();
+
+const aboutHero = await getEntryBySlug("hero", "about");
 ---
 
-<Layout title="About | Jackson Oppenheim">About me</Layout>
+<Layout title="About | Jackson Oppenheim">
+  <Hero heroContent={aboutHero} />
+  <main>
+    <article
+      class="prose prose-headings:text-primary-900 mx-auto pt-8 pb-16 md:px-0 px-8 xl:max-w-4xl lg:max-w-2xl md:max-w-xl max-w-lg"
+    >
+      <AboutContent />
+    </article>
+  </main>
+  <section class="bg-dark-300 text-white">
+    <div class="lg:p-16 p-8">
+      <div
+        class="flex justify-center lg:justify-start relative -left-10 lg:left-0"
+      >
+        <SectionTitle>What I Can Do For You</SectionTitle>
+      </div>
+      <p class="flex-grow prose max-w-lg lg:max-w-none mx-auto">
+        Here are some of the ways I can help you create exceptional digital
+        experiences that meet the needs of your target audience.
+      </p>
+      <div
+        class="prose grid lg:grid-cols-3 gap-8 justify-evenly max-w-lg mx-auto lg:max-w-none"
+      >
+        <div>
+          <h3>Information Architecture</h3>
+          <Image
+            class="mx-auto"
+            src={threeChar}
+            alt="Three people collaborating"
+            height={150}
+          />
+          <p>
+            I specialize in organizing digital content to make it easy to find
+            and navigate through the creation of site maps, wireframes, and
+            other documentation.
+          </p>
+        </div>
+        <div>
+          <h3>Front-end Development</h3>
+          <Image
+            class="mx-auto"
+            src={uiSketch}
+            alt="Three people collaborating"
+            height={150}
+          />
+          <p>
+            I use the latest web development technologies to transform design
+            concepts into functional, visually appealing interfaces.
+          </p>
+        </div>
+        <div>
+          <h3>Accessibility Testing</h3>
+          <Image
+            class="mx-auto"
+            src={wheelchair}
+            alt="Three people collaborating"
+            height={150}
+          />
+          <p>
+            I ensure digital products are usable by people all levels of ability
+            by testing for compliance with web accessibility standards, such as
+            WCAG 2.1, and identifying and addressing accessibility issues.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="p-16">
+    <SectionTitle>Contact me</SectionTitle>
+
+    <Contact />
+  </section>
+</Layout>

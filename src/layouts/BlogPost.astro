@@ -1,16 +1,29 @@
 ---
-import { getEntryBySlug } from "astro:content";
 import Layout from "./Layout.astro";
-import Hero from "../components/Hero.astro";
 
 const { frontmatter } = Astro.props;
-
-const hero = await getEntryBySlug("hero", frontmatter.oneword);
+// const heroSide = frontmatter.heroSide;
+const { heroSide, title, summary } = frontmatter;
 ---
 
 <Layout title={frontmatter.title}>
-  {hero && <Hero heroContent={hero} cta={false} />}
-
+  <section
+    aria-labelledby="hero-title"
+    class="w-full bg-dark-900 text-white py-16 px-20 grid justify-center prose prose-invert prose-h1:text-7xl prose-headings:mb-[0.5em] prose-p:text-xl max-w-none"
+    class:list={[
+      {
+        "lg:grid-cols-[2fr_1fr]": heroSide === "left",
+        "lg:grid-cols-[1fr_2fr]": heroSide === "right",
+      },
+    ]}
+  >
+    <div class:list={heroSide === "right" ? "col-start-2" : "col-start-1"}>
+      <h1>
+        {title}
+      </h1>
+      <p>{summary}</p>
+    </div>
+  </section>
   <article
     class="prose prose-headings:text-primary-900 mx-auto py-16 md:px-0 px-8 xl:max-w-4xl lg:max-w-2xl md:max-w-xl max-w-lg"
   >
