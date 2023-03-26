@@ -1,0 +1,59 @@
+---
+import { Picture } from "@astrojs/image/components";
+import Button from "../svelte/Button.svelte";
+import { Icon } from "astro-icon";
+interface Props {
+  img: {
+    path: string;
+    alt: string;
+    credit: string;
+  };
+  title: string;
+  summary: string;
+  path?: string;
+  published?: string;
+}
+
+const { img, title, summary, path, published } = Astro.props;
+---
+
+<div class="flex max-w-none flex-col gap-4 lg:max-w-sm">
+  <a
+    href={path}
+    class="my-[0.5em] h-12 text-2xl font-semibold text-primary-900"
+  >
+    {title}
+  </a>
+  <figure class="flex flex-col items-center gap-2">
+    <Picture
+      src={img.path}
+      alt={img.alt}
+      widths={[200, 400, 800]}
+      aspectRatio="4:3"
+      sizes="(max-width: 800px) 100vw, 800px"
+      class="rounded-lg"
+    />
+    <figcaption
+      class="prose relative -top-5 w-fit rounded bg-white p-2 text-sm shadow-lg"
+    >
+      <p class="mb-2">Published: {published}</p>
+      <p class="mt-0 text-xs" set:html={img.credit} />
+    </figcaption>
+  </figure>
+
+  <p class="prose">{summary}</p>
+
+  <!-- <div
+    class="bg-dark-200 p-2 rounded w-fit text-sm prose"
+    set:html={img.credit}
+  /> -->
+  <Button link href={path}>
+    <div class="flex gap-2">Read more <Icon name="ph:arrow-right-bold" /></div>
+  </Button>
+</div>
+
+<style>
+  [astro-icon] {
+    @apply h-6;
+  }
+</style>

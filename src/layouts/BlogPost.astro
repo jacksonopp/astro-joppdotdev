@@ -1,15 +1,18 @@
 ---
 import Layout from "./Layout.astro";
+import { Picture } from "@astrojs/image/components";
 
 const { frontmatter } = Astro.props;
 // const heroSide = frontmatter.heroSide;
-const { heroSide, title, summary } = frontmatter;
+const { heroSide, title, summary, image } = frontmatter;
 ---
 
 <Layout title={frontmatter.title}>
+  <!-- Hero Section -->
   <section
+    id="hero"
     aria-labelledby="hero-title"
-    class="w-full bg-dark-900 text-white py-16 px-20 grid justify-center prose prose-invert prose-h1:text-7xl prose-headings:mb-[0.5em] prose-p:text-xl max-w-none"
+    class="relative grid w-full max-w-none grid-cols-1 justify-center text-white"
     class:list={[
       {
         "lg:grid-cols-[2fr_1fr]": heroSide === "left",
@@ -17,16 +20,43 @@ const { heroSide, title, summary } = frontmatter;
       },
     ]}
   >
-    <div class:list={heroSide === "right" ? "col-start-2" : "col-start-1"}>
-      <h1>
+    <!-- Image -->
+    <div class="relative col-span-2">
+      <div
+        class="absolute flex h-full w-full items-end justify-end bg-dark-900/60"
+      >
+        <p
+          class="prose prose-invert w-fit max-w-none rounded-lg p-2 text-sm shadow-md"
+          set:html={image.credit}
+        />
+      </div>
+      <Picture
+        src={image.path}
+        alt={image.alt}
+        widths={[200, 400, 800, 1200]}
+        sizes="100%"
+        aspectRatio="16:8"
+        fit="cover"
+        background="aliceblue"
+      />
+    </div>
+    <!-- Content -->
+    <div
+      class="absolute col-span-1 py-8 px-10 md:py-16 md:px-20"
+      class:list={heroSide === "right" ? "col-start-2" : "col-start-1"}
+    >
+      <h1 class="mb-3 text-3xl font-bold text-white md:text-5xl xl:text-7xl">
         {title}
       </h1>
-      <p>{summary}</p>
+      <p class="font-light leading-7 tracking-wide text-slate-200">{summary}</p>
     </div>
   </section>
+  <!-- Article -->
   <article
-    class="prose prose-headings:text-primary-900 mx-auto py-16 md:px-0 px-8 xl:max-w-4xl lg:max-w-2xl md:max-w-xl max-w-lg"
+    class="prose mx-auto max-w-lg py-16 px-8 prose-headings:text-primary-900 prose-blockquote:border-accent-500 md:max-w-xl md:px-0 lg:max-w-2xl xl:max-w-4xl"
   >
     <slot />
   </article>
 </Layout>
+
+<style></style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from "./Button.svelte";
+  import Button from "../svelte/Button.svelte";
 
   export let activePath: string;
 </script>
@@ -7,7 +7,10 @@
 <nav
   class="flex justify-between items-center px-24 py-4 dark:bg-slate-100 text-black sticky top-0 z-50 shadow-[0_-10px_20px_2px]"
 >
-  <div>Logo</div>
+  <a href="/">
+    <p class="text-primary-600 text-xl font-bold">Jackson Oppenheim</p>
+    <p class="text-sm text-dark-700 tracking-wide font-light">UX Developer</p>
+  </a>
   <div class="flex xl:gap-48 lg:gap-36 md:gap-24 items-center">
     <ul class="flex gap-4 font-bold uppercase">
       <li

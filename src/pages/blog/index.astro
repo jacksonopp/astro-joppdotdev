@@ -1,18 +1,25 @@
 ---
 import { Picture } from "@astrojs/image/components";
 import Layout from "../../layouts/Layout.astro";
+import PostCard from "../../components/astro/PostCard.astro";
 
 let posts = await Astro.glob("./post/*.md");
-let [blog] = posts;
-console.log("🚀 ~ file: index.astro:5 ~ posts:", blog);
 ---
 
 <Layout title="Blog | Jackson Oppenheim">
-  {
-    posts.map((post) => (
-      <div>
-        <pre>{JSON.stringify(post.frontmatter, null, 2)}</pre>
-      </div>
-    ))
-  }
+  <div class="grid gap-6 p-16 lg:grid-cols-2 xl:grid-cols-3">
+    {
+      posts.map((post) => (
+        <div>
+          <PostCard
+            img={post.frontmatter.image}
+            path={post.url}
+            summary={post.frontmatter.summary}
+            title={post.frontmatter.title}
+            published={post.frontmatter.date.published}
+          />
+        </div>
+      ))
+    }
+  </div>
 </Layout>
