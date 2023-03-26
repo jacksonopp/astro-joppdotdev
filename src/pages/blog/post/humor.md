@@ -1,10 +1,16 @@
 ---
-layout: ../../../layouts/BlogPost.astro
 title: The Power of Humor in UX Design
-oneword: humor
 summary: How does incorporating humor in UX design enhance user engagement, create positive emotional connections, and increase conversions? Examples and tips on how to effectively incorporate humor in your own designs.
-published: 03/24/2023
 heroSide: right
+date:
+  published: 03/24/2023
+  updated:
+image:
+  path: ./src/images/humor.jpg
+  alt: A statue with an ice cream cone stuck to its face
+  credit: Photo by <a href="https://unsplash.com/@theblowup?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">the blowup</a> on <a href="https://unsplash.com/photos/swDEADSet6Y?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  origin: https://unsplash.com/photos/swDEADSet6Y
+layout: ../../../layouts/BlogPost.astro
 ---
 
 # The Power of Humor in UX Design

@@ -1,9 +1,9 @@
 ---
 import { getEntryBySlug } from "astro:content";
 import Layout from "./Layout.astro";
-import Hero from "../components/Hero.astro";
-import Contact from "../components/Contact.astro";
-import SectionTitle from "../components/SectionTitle.svelte";
+import Hero from "../components/astro/Hero.astro";
+import Contact from "../components/astro/Contact.astro";
+import SectionTitle from "../components/svelte/SectionTitle.svelte";
 
 const aboutHero = await getEntryBySlug("hero", "about");
 ---

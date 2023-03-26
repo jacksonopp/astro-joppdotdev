@@ -1,14 +1,14 @@
 ---
 import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import SectionTitle from "../components/SectionTitle.svelte";
+import Hero from "../components/astro/Hero.astro";
+import SectionTitle from "../components/svelte/SectionTitle.svelte";
 
 import { Image } from "@astrojs/image/components";
 import wheelchair from "../assets/wheelchair.png";
 import uiSketch from "../assets/ui-sketch.png";
 import threeChar from "../assets/3char.png";
-import Contact from "../components/Contact.astro";
+import Contact from "../components/astro/Contact.astro";
 
 const about = await getEntryBySlug("about", "about");
 const { Content: AboutContent } = await about.render();

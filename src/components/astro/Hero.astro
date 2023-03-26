@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Button from "./Button.svelte";
+
+interface Props {
+  heroContent: CollectionEntry<"hero">;
+  cta?: boolean;
+  twoColumns?: boolean;
+  textSide?: "left" | "right";
+}
+
+const {
+  heroContent,
+  cta = false,
+  twoColumns = false,
+  textSide = "left",
+} = Astro.props;
+
+const { Content } = await heroContent.render();
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="w-full bg-dark-900 text-white py-16 px-20 grid"
+  class:list={[
+    {
+      "lg:grid-cols-[2fr_1fr]": twoColumns && textSide === "left",
+      "lg:grid-cols-[1fr_2fr]": twoColumns && textSide === "right",
+      "justify-center": !twoColumns,
+    },
+  ]}
+>
+  <!-- <!-- class:list={twoColumns ? " grid-cols-[2fr_1fr]" : ""} -->
+  <div
+    class="grid gap-8"
+    class:list={[textSide === "left" ? "lg:col-start-1" : "lg:col-start-2"]}
+  >
+    <div
+      class="prose prose-invert prose-h1:text-7xl prose-headings:mb-[0.5em] prose-p:text-xl max-w-none"
+      class:list={[
+        {
+          "prose-h1:text-6xl prose-h1:font-semibold prose-headings:mb-0":
+            !twoColumns,
+        },
+      ]}
+    >
+      <Content />
+    </div>
+    {cta && <Button>Contact me</Button>}
+  </div>
+</section>

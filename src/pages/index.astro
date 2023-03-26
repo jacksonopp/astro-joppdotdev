@@ -1,7 +1,7 @@
 ---
 import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import Hero from "../components/astro/Hero.astro";
 
 import { Image } from "@astrojs/image/components";
 import ThreeColumn from "../layouts/ThreeColumn.astro";
@@ -11,8 +11,8 @@ import sdgLogo from "../images/sdg_Logo-1.png";
 import onvueLogo from "../images/onvue-logo-color.png";
 import virtuwellLogo from "../images/virtuwell-nohp.png";
 import hpLogo from "../images/hp-logo.png";
-import SectionTitle from "../components/SectionTitle.svelte";
-import Contact from "../components/Contact.astro";
+import SectionTitle from "../components/svelte/SectionTitle.svelte";
+import Contact from "../components/astro/Contact.astro";
 
 const hero = await getEntryBySlug("hero", "hompage");
 ---
