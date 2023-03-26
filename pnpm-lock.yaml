@@ -7,6 +7,7 @@ specifiers:
   '@astrojs/tailwind': ^3.1.1
   '@fontsource/atkinson-hyperlegible': ^4.5.11
   '@fontsource/raleway': ^4.5.12
+  '@iconify/svelte': ^3.1.0
   '@tailwindcss/typography': ^0.5.9
   astro: ^2.1.6
   astro-icon: ^0.8.0
@@ -25,6 +26,7 @@ dependencies:
   '@astrojs/tailwind': 3.1.1_7pxhldtqxqapdoi4tql47ep6su
   '@fontsource/atkinson-hyperlegible': 4.5.11
   '@fontsource/raleway': 4.5.12
+  '@iconify/svelte': 3.1.0_svelte@3.57.0
   astro: 2.1.6_sharp@0.32.0
   astro-icon: 0.8.0
   astro-imagetools: 0.8.1_astro@2.1.6
@@ -670,6 +672,19 @@ packages:
 
   /@fontsource/raleway/4.5.12:
     resolution: {integrity: sha512-uKs13d6NFWU4vf5LSDHK/cbaAw+UXkzz03fKjyvkKq8Nop+CeB6o8STEDkZD9/uOo3v3sgm59Wyw8uGWvxoCiA==}
+    dev: false
+
+  /@iconify/svelte/3.1.0_svelte@3.57.0:
+    resolution: {integrity: sha512-G1w1dcO7eiD+JmQJNwNW4qnAn86oQxKLe1P/iAPjJ0qYYuF7Pb60TPrlcj4+2gu4SXe3a0Jrv++8YmceG+gX/g==}
+    peerDependencies:
+      svelte: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 3.57.0
+    dev: false
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: false
 
   /@jimp/bmp/0.14.0_@jimp+custom@0.14.0:

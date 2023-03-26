@@ -27,7 +27,7 @@ const currentPath = pathname.slice(1);
       "theme--low-v": url.searchParams.get("theme") === "a11y",
     }}
   >
-    <Navigation activePath={currentPath} />
+    <Navigation activePath={currentPath} client:load />
     <slot />
     <Footer />
   </body>
