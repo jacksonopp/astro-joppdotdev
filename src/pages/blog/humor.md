@@ -10,7 +10,7 @@ image:
   alt: A statue with an ice cream cone stuck to its face
   credit: Photo by <a href="https://unsplash.com/@theblowup?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">the blowup</a> on <a href="https://unsplash.com/photos/swDEADSet6Y?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   origin: https://unsplash.com/photos/swDEADSet6Y
-layout: ../../../layouts/BlogPost.astro
+layout: ../../layouts/BlogPost.astro
 ---
 
 ## The Power of Humor in UX Design

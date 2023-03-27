@@ -1,4 +1,5 @@
 ---
+import BreadCrumbs from "../components/astro/BreadCrumbs.astro";
 import Layout from "./Layout.astro";
 import { Picture } from "@astrojs/image/components";
 
@@ -52,6 +53,9 @@ const { heroSide, title, summary, image } = frontmatter;
       <p class="font-light leading-7 tracking-wide text-slate-200">{summary}</p>
     </div>
   </section>
+  <div class="px-16 pt-2">
+    <BreadCrumbs />
+  </div>
   <!-- Article -->
   <article
     class="prose mx-auto max-w-lg py-16 px-8 prose-headings:text-primary-900 prose-blockquote:border-accent-500 md:max-w-xl md:px-0 lg:max-w-2xl xl:max-w-4xl"

@@ -1,0 +1,26 @@
+---
+const paths = Astro.url.pathname.split("/");
+paths.shift();
+const pathLinks = paths.map((path, i) => {
+  return {
+    name: path.split("-").join(" ").toLowerCase(),
+    url: `/${paths.slice(0, i + 1).join("/")}`,
+  };
+});
+---
+
+<div class="text-center md:text-start">
+  <span class="text-gray-700"
+    ><a href="/" class="hover:underline">home</a> /</span
+  >
+  {
+    pathLinks.map((path) => (
+      <span class="text-gray-700 hover:text-slate-900">
+        <a href={path.url} class="hover:underline">
+          {path.name}
+        </a>
+        /
+      </span>
+    ))
+  }
+</div>

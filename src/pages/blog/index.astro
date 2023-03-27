@@ -1,9 +1,8 @@
 ---
-import { Picture } from "@astrojs/image/components";
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/astro/PostCard.astro";
 
-let posts = await Astro.glob("./post/*.md");
+let posts = await Astro.glob("./*.md");
 ---
 
 <Layout title="Blog | Jackson Oppenheim">

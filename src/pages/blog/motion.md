@@ -10,7 +10,7 @@ image:
   alt: colorful lines created by car tail lights
   credit: Photo by <a href="https://unsplash.com/@robinpierre?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Robin Pierre</a> on <a href="https://unsplash.com/photos/dPgPoiUIiXk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   origin: https://unsplash.com/photos/dPgPoiUIiXk
-layout: ../../../layouts/BlogPost.astro
+layout: ../../layouts/BlogPost.astro
 ---
 
 ## The Importance of Motion in User Experience Design
