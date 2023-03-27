@@ -21,7 +21,7 @@ const { heroSide, title, summary, image } = frontmatter;
     ]}
   >
     <!-- Image -->
-    <div class="relative col-span-2">
+    <div class="relative col-span-2 h-[300px] overflow-clip md:h-[500px]">
       <div
         class="absolute flex h-full w-full items-end justify-end bg-dark-900/60"
       >
@@ -33,11 +33,12 @@ const { heroSide, title, summary, image } = frontmatter;
       <Picture
         src={image.path}
         alt={image.alt}
-        widths={[200, 400, 800, 1200]}
-        sizes="100%"
-        aspectRatio="16:8"
+        widths={[200, 400, 800, 1200, 2400]}
+        sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 2400px"
+        aspectRatio="1:1"
         fit="cover"
         background="aliceblue"
+        position="attention"
       />
     </div>
     <!-- Content -->
