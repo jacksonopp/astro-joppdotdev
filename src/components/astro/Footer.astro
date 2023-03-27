@@ -11,9 +11,26 @@ const year = new Date().getFullYear();
     <div>
       <SectionTitle offset theme="accent" dark>About</SectionTitle>
     </div>
-    <div>
+    <nav aria-label="Footer">
       <SectionTitle offset theme="accent" dark>Links</SectionTitle>
-    </div>
+      <ul>
+        <li>
+          <a class="hover:underline" href="/">Home</a>
+        </li>
+        <li>
+          <a class="hover:underline" href="/about">About</a>
+        </li>
+        <li>
+          <a class="hover:underline" href="/portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a class="hover:underline" href="/blog">Blog</a>
+        </li>
+        <li>
+          <a class="hover:underline" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
     <div class="flex flex-col gap-8">
       <div>
         <SectionTitle offset theme="accent" dark>Contact Me</SectionTitle>

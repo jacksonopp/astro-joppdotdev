@@ -23,12 +23,20 @@ const currentPath = pathname.slice(1);
     <title>{title}</title>
   </head>
   <body
+    class="grid grid-rows-[auto_1fr_auto]"
     class:list={{
       "theme--low-v": url.searchParams.get("theme") === "a11y",
     }}
   >
-    <Navigation activePath={currentPath} client:load />
-    <slot />
+    <a
+      href="#main-content"
+      class="sr-only top-6 left-6 z-50 rounded border border-dark-300 bg-white shadow-lg focus:not-sr-only focus:absolute focus:block focus:p-4"
+      >Skip to main content</a
+    >
+    <Navigation activePath={currentPath} client:only />
+    <div id="main-content">
+      <slot />
+    </div>
     <Footer />
   </body>
 </html>

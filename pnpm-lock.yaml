@@ -19,6 +19,7 @@ specifiers:
   sharp: ^0.32.0
   svelte: ^3.54.0
   tailwindcss: ^3.0.24
+  trap-focus-svelte: ^1.0.0
 
 dependencies:
   '@astrojs/image': 0.16.2_astro@2.1.6+sharp@0.32.0
@@ -35,6 +36,7 @@ dependencies:
   sharp: 0.32.0
   svelte: 3.57.0
   tailwindcss: 3.2.7
+  trap-focus-svelte: 1.0.0
 
 devDependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
@@ -4922,6 +4924,10 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
+
+  /trap-focus-svelte/1.0.0:
+    resolution: {integrity: sha512-GFZ/YeVptvdxQEi+Xktyherm4ggS/oga28Fhnj2NknGB8Px1fTWwvxLYUd/7F8cD302lK24QPYDxMcxAuJJAtQ==}
     dev: false
 
   /trim-lines/3.0.1:

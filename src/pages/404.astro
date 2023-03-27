@@ -1,0 +1,24 @@
+---
+import BreadCrumbs from "../components/astro/BreadCrumbs.astro";
+import Layout from "../layouts/Layout.astro";
+import { Picture } from "@astrojs/image/components";
+---
+
+<Layout title="Page Not Found">
+  <div class="px-16 py-8">
+    <BreadCrumbs omitCurrentPage={true} />
+  </div>
+  <div
+    class="grid h-[calc(100vh-500px)] grid-rows-[auto_1fr] justify-center p-8 lg:h-[calc(100vh-300px)]"
+  >
+    <h1 class="text-5xl">Oops! Looks like we couldn't find this page.</h1>
+    <Picture
+      class="mx-auto w-96"
+      src="/images/lost.png"
+      alt="A man looking lost"
+      widths={[200, 400, 800]}
+      sizes="(max-width: 200) 400, 800"
+      aspectRatio="1:1"
+    />
+  </div>
+</Layout>

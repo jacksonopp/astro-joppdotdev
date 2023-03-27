@@ -2,6 +2,7 @@
   import Button from "../svelte/Button.svelte";
   import Icon from "@iconify/svelte";
   import { fly, fade } from "svelte/transition";
+  import { trapFocus } from "trap-focus-svelte";
 
   export let activePath: string;
 
@@ -10,7 +11,8 @@
 </script>
 
 <nav
-  class="flex justify-between items-center lg:px-24 md:px-12 px-6 py-4 dark:bg-slate-100 text-black sticky top-0 z-50 shadow-[0_-10px_20px_2px]"
+  aria-label="Primary"
+  class="flex justify-between items-center lg:px-24 md:px-12 px-6 py-4 dark:bg-slate-100 text-black sticky top-0 z-40 shadow-[0_-10px_20px_2px]"
 >
   <a href="/">
     <p class="text-primary-600 text-xl font-bold">Jackson Oppenheim</p>
@@ -51,7 +53,7 @@
         class:text-primary-700={activePath.includes("contact")}
         class:underline={activePath.includes("contact")}
       >
-        <a href="/blog">Contact</a>
+        <a href="/contact">Contact</a>
       </li>
     </ul>
     <Button color="primary">Contact Me</Button>
@@ -76,6 +78,7 @@
 {#if sidebarOpen}
   <!-- transition:fly={{ x: 800 }} -->
   <nav
+    use:trapFocus
     in:fly={{ x: 800 }}
     out:fly={{ x: 800, delay: 350 }}
     class="h-screen w-screen bg-slate-900/95 z-50 fixed top-0 left-0 pt-6 pb-12 px-6 text-white grid grid-cols-2 grid-rows-[auto_1fr]"

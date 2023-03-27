@@ -1,6 +1,15 @@
 ---
+interface Props {
+  omitCurrentPage?: boolean;
+}
+
+const { omitCurrentPage } = Astro.props;
+
 const paths = Astro.url.pathname.split("/");
 paths.shift();
+if (omitCurrentPage) {
+  paths.pop();
+}
 const pathLinks = paths.map((path, i) => {
   return {
     name: path.split("-").join(" ").toLowerCase(),
@@ -9,7 +18,7 @@ const pathLinks = paths.map((path, i) => {
 });
 ---
 
-<div class="text-center md:text-start">
+<nav aria-label="breadcrumbs" class="text-center md:text-start">
   <span class="text-gray-700"
     ><a href="/" class="hover:underline">home</a> /</span
   >
@@ -23,4 +32,4 @@ const pathLinks = paths.map((path, i) => {
       </span>
     ))
   }
-</div>
+</nav>
