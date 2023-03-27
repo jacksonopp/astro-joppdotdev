@@ -6,7 +6,7 @@ date:
   published: 03/24/2023
   updated:
 image:
-  path: ./src/images/motion.jpg
+  path: /images/motion.jpg
   alt: colorful lines created by car tail lights
   credit: Photo by <a href="https://unsplash.com/@robinpierre?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Robin Pierre</a> on <a href="https://unsplash.com/photos/dPgPoiUIiXk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   origin: https://unsplash.com/photos/dPgPoiUIiXk

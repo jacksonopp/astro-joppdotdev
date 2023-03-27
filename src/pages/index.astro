@@ -3,14 +3,14 @@ import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 
-import { Image } from "@astrojs/image/components";
+import { Image, Picture } from "@astrojs/image/components";
 import ThreeColumn from "../layouts/ThreeColumn.astro";
-import computerPng from "../images/computer.png";
-import pearsonLogo from "../images/pearson-logo.png";
-import sdgLogo from "../images/sdg_Logo-1.png";
-import onvueLogo from "../images/onvue-logo-color.png";
-import virtuwellLogo from "../images/virtuwell-nohp.png";
-import hpLogo from "../images/hp-logo.png";
+// import computerPng from "../images/computer.png";
+// import pearsonLogo from "../images/pearson-logo.png";
+// import sdgLogo from "../images/sdg_Logo-1.png";
+// import onvueLogo from "../images/onvue-logo-color.png";
+// import virtuwellLogo from "../images/virtuwell-nohp.png";
+// import hpLogo from "../images/hp-logo.png";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
 import Contact from "../components/astro/Contact.astro";
 
@@ -34,7 +34,15 @@ const hero = await getEntryBySlug("hero", "hompage");
           end-users and stakeholders.
         </p>
       </div>
-      <Image src={computerPng} alt="A computer" slot="col2" />
+      <Picture
+        src="/images/computer.png"
+        alt="A computer"
+        slot="col2"
+        widths={[200, 400, 800]}
+        aspectRatio="4:3"
+        sizes="(max-width: 800px) 100vw, 800px"
+        fit="inside"
+      />
       <div slot="col3" class="prose">
         <p>
           My expertise spans across a range of industries, including healthcare,
@@ -59,11 +67,56 @@ const hero = await getEntryBySlug("hero", "hompage");
       <div
         class="mx-auto flex flex-wrap items-center justify-evenly gap-8 px-8 pb-8 pt-4 lg:flex-row lg:px-16 lg:py-16"
       >
-        <Image src={pearsonLogo} alt="Pearson" height={64} class="h-16" />
-        <Image src={virtuwellLogo} alt="Virtuwell" height={64} class="h-16" />
-        <Image src={sdgLogo} alt="Pearson" height={64} class="h-16" />
-        <Image src={onvueLogo} alt="Pearson" height={64} class="h-16" />
-        <Image src={hpLogo} alt="Virtuwell" height={64} class="h-16" />
+        <Picture
+          src="/images/pearson-logo.png"
+          alt="Pearson"
+          height={64}
+          class="h-16"
+          widths={[200, 400, 800]}
+          aspectRatio="1:1"
+          sizes="(max-width: 800px) 100vw, 800px"
+          fit="inside"
+        />
+        <Picture
+          src="/images/virtuwell-nohp.png"
+          alt="Virtuwell"
+          height={64}
+          class="h-16"
+          widths={[200, 400, 800]}
+          aspectRatio="1:1"
+          sizes="(max-width: 800px) 100vw, 800px"
+          fit="inside"
+        />
+        <Picture
+          src="/images/sdg_Logo-1.png"
+          alt="SDG"
+          height={64}
+          class="h-16"
+          widths={[200, 400, 800]}
+          aspectRatio="1:1"
+          sizes="(max-width: 800px) 100vw, 800px"
+          fit="inside"
+        />
+        <Picture
+          src="/images/onvue-logo.png"
+          alt="Pearson"
+          height={64}
+          class="h-16"
+          widths={[200, 400, 800]}
+          aspectRatio="1:1"
+          sizes="(max-width: 800px) 100vw, 800px"
+          fit="inside"
+        />
+        <Picture
+          src="/images/hp-logo.png"
+          alt="Health Partners"
+          height={64}
+          class="h-16"
+          widths={[200, 400, 800]}
+          aspectRatio="1:1"
+          sizes="(max-width: 800px) 100vw, 800px"
+          fit="inside"
+        />
       </div>
     </section>
     <section class="p-16" aria-labelledby="contact">

@@ -4,10 +4,9 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
 
-import { Image } from "@astrojs/image/components";
-import wheelchair from "../images/wheelchair.png";
-import uiSketch from "../images/ui-sketch.png";
-import threeChar from "../images/3char.png";
+import { Image, Picture } from "@astrojs/image/components";
+// import uiSketch from "../images/ui-sketch.png";
+// import threeChar from "../images/3char.png";
 import Contact from "../components/astro/Contact.astro";
 
 const about = await getEntryBySlug("about", "about");
@@ -43,11 +42,14 @@ const aboutHero = await getEntryBySlug("hero", "about");
       >
         <div>
           <h3>Information Architecture</h3>
-          <Image
-            class="mx-auto"
-            src={threeChar}
+          <Picture
+            class="mx-auto h-44"
+            src="/images/wheelchair.png"
             alt="Three people collaborating"
-            height={150}
+            widths={[200, 400, 800]}
+            aspectRatio="4:3"
+            sizes="(max-width: 800px) 100vw, 800px"
+            fit="inside"
           />
           <p>
             I specialize in organizing digital content to make it easy to find
@@ -57,11 +59,14 @@ const aboutHero = await getEntryBySlug("hero", "about");
         </div>
         <div>
           <h3>Front-end Development</h3>
-          <Image
-            class="mx-auto"
-            src={uiSketch}
+          <Picture
+            class="mx-auto h-44"
+            src="/images/3char.png"
             alt="Three people collaborating"
-            height={150}
+            widths={[200, 400, 800]}
+            aspectRatio="4:3"
+            sizes="(max-width: 800px) 100vw, 800px"
+            fit="inside"
           />
           <p>
             I use the latest web development technologies to transform design
@@ -70,11 +75,14 @@ const aboutHero = await getEntryBySlug("hero", "about");
         </div>
         <div>
           <h3>Accessibility Testing</h3>
-          <Image
-            class="mx-auto"
-            src={wheelchair}
+          <Picture
+            class="mx-auto h-44"
+            src="/images/wheelchair.png"
             alt="Three people collaborating"
-            height={150}
+            widths={[200, 400, 800]}
+            aspectRatio="4:3"
+            sizes="(max-width: 800px) 100vw, 800px"
+            fit="inside"
           />
           <p>
             I ensure digital products are usable by people all levels of ability

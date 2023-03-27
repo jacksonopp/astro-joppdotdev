@@ -6,7 +6,7 @@ date:
   published: 03/25/2023
   updated:
 image:
-  path: ./src/images/dx-is-ux.jpg
+  path: /images/dx-is-ux.jpg
   alt: A statue with an ice cream cone stuck to its face
   credit: Photo by <a href="https://unsplash.com/@nublson?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nubelson Fernandes</a> on <a href="https://unsplash.com/s/photos/developer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 layout: ../../../layouts/BlogPost.astro
