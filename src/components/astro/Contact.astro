@@ -1,77 +1,178 @@
 ---
 import Button from "../svelte/Button.svelte";
+import { type ZodError, z } from "astro/zod";
+import CountableTextArea from "../svelte/CountableTextArea.svelte";
+
+const siteKey = import.meta.env.PUBLIC_SITE_KEY;
 
 interface Props {
   dark?: boolean;
 }
 
 const { dark } = Astro.props;
+
+type Errors = {
+  name?: string[];
+  email?: string[];
+  phone?: string[];
+  message?: string[];
+};
+
+let hasErrors = false;
+
+let errors: Errors = {
+  name: [],
+  email: [],
+  phone: [],
+  message: [],
+};
+
+// /^\d{10}$/
+
+const contactSchema = z.object({
+  name: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be at least 2 characters" }),
+  email: z.string({ required_error: "Email is required" }).email(),
+  phone: z.string({ required_error: "Phone number is required" }),
+  message: z
+    .string({ required_error: "Message is required" })
+    .max(1000, { message: "Message must be fewer than 1000 characters" }),
+});
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const formData = contactSchema.parse(Object.fromEntries(data));
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    console.log(formData);
+    fetch("https://eoiv8u9dtix4tl1.m.pipedream.net", {
+      method: "POST",
+      headers,
+      mode: "cors",
+      body: JSON.stringify(formData),
+    });
+  } catch (error) {
+    hasErrors = true;
+    const e = error as ZodError;
+    errors = e.flatten<Errors>().fieldErrors;
+    console.error(errors);
+  }
+}
 ---
 
-<form class="grid gap-x-16 gap-y-8 md:grid-cols-3">
+{
+  hasErrors && (
+    <div class="border-dark-200 mb-6 rounded border border-l-4 border-l-red-600 bg-white py-2 pl-4 pr-2 shadow-md">
+      <p>Please correct the following errors:</p>
+      <ul class="list-inside list-disc">
+        {errors.name?.map((err) => (
+          <li>{err}</li>
+        ))}
+        {errors.email?.map((err) => (
+          <li>{err}</li>
+        ))}
+        {errors.phone?.map((err) => (
+          <li>{err}</li>
+        ))}
+        {errors.message?.map((err) => (
+          <li>{err}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+<form
+  class="grid gap-x-16 gap-y-8 md:grid-cols-3"
+  method="post"
+  id="contact-form"
+>
   <div class="grid gap-1">
     <label
       for="name"
       class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
-      class:list={{
-        "text-dark-50": dark,
-      }}
       data-after="*">Name</label
     >
     <input
+      required
       type="text"
       name="name"
       id="name"
-      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      placeholder="me@example.com"
     />
   </div>
   <div class="grid gap-1">
     <label
       for="email"
       class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
-      class:list={{
-        "text-dark-50": dark,
-      }}
       data-after="*">Email</label
     >
     <input
+      required
       type="email"
       name="email"
       id="email"
-      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      placeholder="me@example.com"
     />
   </div>
   <div class="grid gap-1">
     <label
       for="phone"
       class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
-      class:list={{
-        "text-dark-50": dark,
-      }}
-      data-after="*">Phone</label
+      data-after="*">Phone (555-555-5555)</label
     >
     <input
+      required
       type="tel"
       name="phone"
       id="phone"
-      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      placeholder="555-555-5555"
     />
   </div>
   <div class="grid gap-1 md:col-span-3">
     <label
       for="message"
       class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
-      class:list={{
-        "text-dark-50": dark,
-      }}
       data-after="*">Message</label
     >
-    <textarea
+    <CountableTextArea
+      client:load
+      required
       name="message"
       id="message"
-      rows="5"
-      class="w-full rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
-    ></textarea>
+      className="w-full rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      placeholder="Your message goes here"
+    />
   </div>
-  <Button color="accent">Send message</Button>
+  <button class="g-recaptcha" data-sitekey={siteKey} data-callback="onSubmit"
+    >Send Message</button
+  >
+  <!-- <Button color="accent">Send message</Button> -->
+
+  <script async src="https://www.google.com/recaptcha/api.js"></script>
+
+  <script is:inline>
+    const formEl = document.getElementById("contact-form");
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+
+    async function onSubmit(token) {
+      console.log("validating...");
+      const res = await fetch("/api/recaptcha", {
+        method: "POST",
+        body: JSON.stringify(token),
+      });
+      const gRes = await res.json();
+      if (gRes.responseData.success) {
+        formEl.submit();
+      } else {
+        console.log("Validation failed for some reason?");
+      }
+    }
+  </script>
 </form>

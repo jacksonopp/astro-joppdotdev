@@ -9,8 +9,15 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [svelte(), tailwind(), mdx(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  })],
-  adapter: vercel()
+  integrations: [
+    svelte(),
+    tailwind(),
+    mdx(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
+  adapter: vercel({
+    analytics: true,
+  }),
 });

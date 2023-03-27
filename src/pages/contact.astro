@@ -1,0 +1,16 @@
+---
+import { getEntryBySlug } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/astro/Hero.astro";
+import Contact from "../components/astro/Contact.astro";
+import { z } from "astro:content";
+
+const contactHero = await getEntryBySlug("hero", "contact");
+---
+
+<Layout title="Contact Me | Jackson Oppenheim">
+  <Hero heroContent={contactHero} />
+  <main class="p-8">
+    <Contact />
+  </main>
+</Layout>
