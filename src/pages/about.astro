@@ -5,9 +5,9 @@ import Hero from "../components/astro/Hero.astro";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
 
 import { Image } from "@astrojs/image/components";
-import wheelchair from "../assets/wheelchair.png";
-import uiSketch from "../assets/ui-sketch.png";
-import threeChar from "../assets/3char.png";
+import wheelchair from "../images/wheelchair.png";
+import uiSketch from "../images/ui-sketch.png";
+import threeChar from "../images/3char.png";
 import Contact from "../components/astro/Contact.astro";
 
 const about = await getEntryBySlug("about", "about");
@@ -22,24 +22,24 @@ const aboutHero = await getEntryBySlug("hero", "about");
   <Hero heroContent={aboutHero} />
   <main>
     <article
-      class="prose prose-headings:text-primary-900 mx-auto pt-8 pb-16 md:px-0 px-8 xl:max-w-4xl lg:max-w-2xl md:max-w-xl max-w-lg"
+      class="prose mx-auto max-w-lg px-8 pt-8 pb-16 prose-headings:text-primary-900 md:max-w-xl md:px-0 lg:max-w-2xl xl:max-w-4xl"
     >
       <AboutContent />
     </article>
   </main>
   <section class="bg-dark-300 text-white">
-    <div class="lg:p-16 p-8">
+    <div class="p-8 lg:p-16">
       <div
-        class="flex justify-center lg:justify-start relative -left-10 lg:left-0"
+        class="relative -left-10 flex justify-center lg:left-0 lg:justify-start"
       >
         <SectionTitle>What I Can Do For You</SectionTitle>
       </div>
-      <p class="flex-grow prose max-w-lg lg:max-w-none mx-auto">
+      <p class="prose mx-auto max-w-lg flex-grow lg:max-w-none">
         Here are some of the ways I can help you create exceptional digital
         experiences that meet the needs of your target audience.
       </p>
       <div
-        class="prose grid lg:grid-cols-3 gap-8 justify-evenly max-w-lg mx-auto lg:max-w-none"
+        class="prose mx-auto grid max-w-lg justify-evenly gap-8 lg:max-w-none lg:grid-cols-3"
       >
         <div>
           <h3>Information Architecture</h3>
@@ -85,7 +85,7 @@ const aboutHero = await getEntryBySlug("hero", "about");
       </div>
     </div>
   </section>
-  <section class="p-16">
+  <section class="p-8 md:p-16">
     <SectionTitle>Contact me</SectionTitle>
 
     <Contact />

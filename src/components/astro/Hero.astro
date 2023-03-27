@@ -21,7 +21,7 @@ const { Content } = await heroContent.render();
 
 <section
   aria-labelledby="hero-title"
-  class="w-full bg-dark-900 text-white py-16 px-20 grid"
+  class="grid w-full bg-dark-900 py-8 px-8 text-white md:px-20 md:py-16"
   class:list={[
     {
       "lg:grid-cols-[2fr_1fr]": twoColumns && textSide === "left",
@@ -36,10 +36,10 @@ const { Content } = await heroContent.render();
     class:list={[textSide === "left" ? "lg:col-start-1" : "lg:col-start-2"]}
   >
     <div
-      class="prose prose-invert prose-h1:text-7xl prose-headings:mb-[0.5em] prose-p:text-xl max-w-none"
+      class="prose prose-invert max-w-none prose-headings:mb-[0.5em] prose-h1:text-6xl prose-p:text-lg md:prose-h1:text-7xl md:prose-p:text-xl"
       class:list={[
         {
-          "prose-h1:text-6xl prose-h1:font-semibold prose-headings:mb-0":
+          "lg:prose-h1:text-6xl prose-h1:font-semibold prose-headings:mb-0":
             !twoColumns,
         },
       ]}

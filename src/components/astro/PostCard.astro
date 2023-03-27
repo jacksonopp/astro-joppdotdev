@@ -17,10 +17,10 @@ interface Props {
 const { img, title, summary, path, published } = Astro.props;
 ---
 
-<div class="flex max-w-none flex-col gap-4 lg:max-w-sm">
+<div class="flex max-w-none flex-col gap-2 md:gap-4 lg:max-w-sm">
   <a
     href={path}
-    class="my-[0.5em] h-12 text-2xl font-semibold text-primary-900"
+    class="mt-3 text-2xl font-semibold text-primary-900 md:h-12 lg:my-[0.5em]"
   >
     {title}
   </a>
@@ -34,7 +34,7 @@ const { img, title, summary, path, published } = Astro.props;
       class="rounded-lg"
     />
     <figcaption
-      class="prose relative -top-5 w-fit rounded bg-white p-2 text-sm shadow-lg"
+      class="prose relative -top-10 w-fit max-w-[90%] rounded bg-white p-2 text-sm shadow-lg lg:-top-5"
     >
       <p class="mb-2">Published: {published}</p>
       <p class="mt-0 text-xs" set:html={img.credit} />

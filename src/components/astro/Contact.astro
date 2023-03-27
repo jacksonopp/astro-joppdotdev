@@ -8,7 +8,7 @@ interface Props {
 const { dark } = Astro.props;
 ---
 
-<form class="grid md:grid-cols-3 gap-x-16 gap-y-8">
+<form class="grid gap-x-16 gap-y-8 md:grid-cols-3">
   <div class="grid gap-1">
     <label
       for="name"
@@ -22,7 +22,7 @@ const { dark } = Astro.props;
       type="text"
       name="name"
       id="name"
-      class="border border-dark-800 focus-within:outline-2 focus-within:outline-primary-500 rounded-md p-2"
+      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
     />
   </div>
   <div class="grid gap-1">
@@ -38,7 +38,7 @@ const { dark } = Astro.props;
       type="email"
       name="email"
       id="email"
-      class="border border-dark-800 focus-within:outline-2 focus-within:outline-primary-500 rounded-md p-2"
+      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
     />
   </div>
   <div class="grid gap-1">
@@ -54,10 +54,10 @@ const { dark } = Astro.props;
       type="tel"
       name="phone"
       id="phone"
-      class="border border-dark-800 focus-within:outline-2 focus-within:outline-primary-500 rounded-md p-2"
+      class="rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
     />
   </div>
-  <div class="col-span-3 grid gap-1">
+  <div class="grid gap-1 md:col-span-3">
     <label
       for="message"
       class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
@@ -70,7 +70,7 @@ const { dark } = Astro.props;
       name="message"
       id="message"
       rows="5"
-      class="border border-dark-800 focus-within:outline-2 focus-within:outline-primary-500 rounded-md p-2 w-full"
+      class="w-full rounded-md border border-dark-800 p-2 focus-within:outline-2 focus-within:outline-primary-500"
     ></textarea>
   </div>
   <Button color="accent">Send message</Button>

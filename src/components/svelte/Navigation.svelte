@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from "../svelte/Button.svelte";
   import Icon from "@iconify/svelte";
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
 
   export let activePath: string;
 
@@ -56,14 +56,21 @@
     </ul>
     <Button color="primary">Contact Me</Button>
   </div>
-  <div class="block lg:hidden">
-    <button
-      on:click={toggleSidebar}
-      class="grid place-items-center w-10 h-10 outline outline-2 outline-slate-600 text-slate-600 rounded-lg active:bg-accent-600/30"
+  {#if !sidebarOpen}
+    <!-- content here -->
+    <div
+      out:fade={{ duration: 150 }}
+      in:fade={{ delay: 400, duration: 150 }}
+      class="block lg:hidden"
     >
-      <Icon icon="ic:round-menu" height={30} />
-    </button>
-  </div>
+      <button
+        on:click={toggleSidebar}
+        class="grid place-items-center w-10 h-10 outline outline-2 outline-slate-600 text-slate-600 rounded-lg active:bg-accent-600/30"
+      >
+        <Icon icon="ic:round-menu" height={30} />
+      </button>
+    </div>
+  {/if}
 </nav>
 
 {#if sidebarOpen}
@@ -75,7 +82,7 @@
   >
     <button
       on:click={toggleSidebar}
-      class="grid col-start-2 justify-self-end place-items-center w-10 h-10 outline outline-2 outline-slate-600 text-slate-600 rounded-lg active:bg-accent-600/30"
+      class="grid col-start-2 justify-self-end place-items-center w-10 h-10 outline outline-2 outline-slate-400 text-slate-400 rounded-lg active:bg-accent-600/30"
     >
       <Icon icon="ic:sharp-close" height={30} />
     </button>
@@ -85,8 +92,8 @@
         class:text-primary-400={activePath === ""}
         class:text-opacity-90={activePath === ""}
         class:underline={activePath === ""}
-        out:fly={{ x: 50, delay: 100 }}
-        in:fly={{ x: 50, delay: 200 }}
+        out:fly={{ x: 100, delay: 100 }}
+        in:fly={{ x: 100, delay: 200 }}
       >
         <a href="/">Home</a>
       </li>
@@ -95,8 +102,8 @@
         class:text-primary-400={activePath === "about"}
         class:text-opacity-90={activePath === "about"}
         class:underline={activePath === "about"}
-        out:fly={{ x: 50, delay: 150 }}
-        in:fly={{ x: 50, delay: 300 }}
+        out:fly={{ x: 100, delay: 150 }}
+        in:fly={{ x: 100, delay: 300 }}
       >
         <a href="/about">About</a>
       </li>
@@ -105,8 +112,8 @@
         class:text-primary-400={activePath === "portfolio"}
         class:text-opacity-90={activePath === "portfolio"}
         class:underline={activePath === "portfolio"}
-        out:fly={{ x: 50, delay: 200 }}
-        in:fly={{ x: 50, delay: 400 }}
+        out:fly={{ x: 100, delay: 200 }}
+        in:fly={{ x: 100, delay: 400 }}
       >
         <a href="/portfolio">Portfolio</a>
       </li>
@@ -115,8 +122,8 @@
         class:text-primary-400={activePath === "blog"}
         class:text-opacity-90={activePath === "blog"}
         class:underline={activePath === "blog"}
-        out:fly={{ x: 50, delay: 250 }}
-        in:fly={{ x: 50, delay: 500 }}
+        out:fly={{ x: 100, delay: 250 }}
+        in:fly={{ x: 100, delay: 500 }}
       >
         <a href="/blog">Blog</a>
       </li>
@@ -125,8 +132,8 @@
         class:text-primary-400={activePath === "contact"}
         class:text-opacity-90={activePath === "contact"}
         class:underline={activePath === "contact"}
-        out:fly={{ x: 50, delay: 300 }}
-        in:fly={{ x: 50, delay: 600 }}
+        out:fly={{ x: 100, delay: 300 }}
+        in:fly={{ x: 100, delay: 600 }}
       >
         <a href="/contact">Contact</a>
       </li>

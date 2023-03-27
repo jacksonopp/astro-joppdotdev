@@ -11,11 +11,12 @@ const { id, title } = Astro.props;
 
 <section
   aria-labelledby={id}
-  class="grid lg:grid-cols-3 md:grid-cols-2 p-16 gap-x-4 justify-items-center"
+  class="grid justify-items-center gap-x-4 px-8 py-16 md:grid-cols-2 md:p-16 lg:grid-cols-3"
 >
   <SectionTitle
-    classes="lg:col-span-3 md:col-span-2 justify-self-start"
+    classes="lg:col-span-3 md:col-span-2 justify-self-start md:left-0"
     id={id}
+    offset
   >
     {title}
   </SectionTitle>

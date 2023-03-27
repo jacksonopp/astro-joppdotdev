@@ -7,7 +7,7 @@ let posts = await Astro.glob("./post/*.md");
 ---
 
 <Layout title="Blog | Jackson Oppenheim">
-  <div class="grid gap-6 p-16 lg:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-6 p-8 md:grid-cols-2 md:p-16 lg:grid-cols-3">
     {
       posts.map((post) => (
         <div>

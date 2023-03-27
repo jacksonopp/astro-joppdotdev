@@ -19,7 +19,7 @@ const hero = await getEntryBySlug("hero", "hompage");
 
 <Layout title="Jackson Oppenheim, UX Developer">
   <main>
-    <!-- <Hero heroContent={hero} cta twoColumns={true} /> -->
+    <Hero heroContent={hero} cta twoColumns={true} />
 
     <ThreeColumn title="About Me" id="about-me">
       <div slot="col1" class="prose prose-slate">
@@ -52,11 +52,13 @@ const hero = await getEntryBySlug("hero", "hompage");
       </div>
     </ThreeColumn>
     <!-- TODO: Make these sections mobile responsive -->
-    <!-- <section aria-label="companies" class="bg-dark-400">
+    <section aria-label="companies" class="bg-dark-400">
       <div class="px-16 pt-8">
         <SectionTitle>Companies I've Worked With</SectionTitle>
       </div>
-      <div class="flex justify-evenly py-16">
+      <div
+        class="mx-auto flex flex-wrap items-center justify-evenly gap-8 px-8 pb-8 pt-4 lg:flex-row lg:px-16 lg:py-16"
+      >
         <Image src={pearsonLogo} alt="Pearson" height={64} class="h-16" />
         <Image src={virtuwellLogo} alt="Virtuwell" height={64} class="h-16" />
         <Image src={sdgLogo} alt="Pearson" height={64} class="h-16" />
@@ -67,6 +69,6 @@ const hero = await getEntryBySlug("hero", "hompage");
     <section class="p-16" aria-labelledby="contact">
       <SectionTitle id="contact">Contact Me</SectionTitle>
       <Contact />
-    </section> -->
+    </section>
   </main>
 </Layout>
