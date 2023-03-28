@@ -2,6 +2,7 @@
 import { Picture } from "@astrojs/image/components";
 import Button from "../svelte/Button.svelte";
 import { Icon } from "astro-icon";
+import CldImage from "./CldImage.astro";
 interface Props {
   img: {
     path: string;
@@ -25,14 +26,22 @@ const { img, title, summary, path, published } = Astro.props;
     {title}
   </a>
   <figure class="flex flex-col items-center gap-2">
-    <Picture
+    <CldImage
+      src={img.path}
+      alt={img.alt}
+      width={384}
+      height={288}
+      fit="thumb"
+      gravity="face:center"
+    />
+    <!-- <Picture
       src={img.path}
       alt={img.alt}
       widths={[200, 400, 800]}
       aspectRatio="4:3"
       sizes="(max-width: 800px) 100vw, 800px"
       class="rounded-lg"
-    />
+    /> -->
     <figcaption
       class="prose relative -top-10 w-fit max-w-[90%] rounded bg-white p-2 text-sm shadow-lg lg:-top-5"
     >

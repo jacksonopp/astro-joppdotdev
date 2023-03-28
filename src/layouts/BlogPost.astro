@@ -1,7 +1,8 @@
 ---
+import BlogHero from "../components/astro/BlogHero.astro";
 import BreadCrumbs from "../components/astro/BreadCrumbs.astro";
+import CldImage from "../components/astro/CldImage.astro";
 import Layout from "./Layout.astro";
-import { Picture } from "@astrojs/image/components";
 
 const { frontmatter } = Astro.props;
 // const heroSide = frontmatter.heroSide;
@@ -10,49 +11,7 @@ const { heroSide, title, summary, image } = frontmatter;
 
 <Layout title={frontmatter.title}>
   <!-- Hero Section -->
-  <section
-    id="hero"
-    aria-labelledby="hero-title"
-    class="relative grid w-full max-w-none grid-cols-1 justify-center text-white"
-    class:list={[
-      {
-        "lg:grid-cols-[2fr_1fr]": heroSide === "left",
-        "lg:grid-cols-[1fr_2fr]": heroSide === "right",
-      },
-    ]}
-  >
-    <!-- Image -->
-    <div class="relative col-span-2 h-[300px] overflow-clip md:h-[500px]">
-      <div
-        class="absolute flex h-full w-full items-end justify-end bg-dark-900/60"
-      >
-        <p
-          class="prose prose-invert w-fit max-w-none rounded-lg p-2 text-sm shadow-md"
-          set:html={image.credit}
-        />
-      </div>
-      <Picture
-        src={image.path}
-        alt={image.alt}
-        widths={[200, 400, 800, 1200, 2400]}
-        sizes="(max-width: 200px) 400px, (max-width: 400px) 800px, 2400px"
-        aspectRatio="1:1"
-        fit="cover"
-        background="aliceblue"
-        position="attention"
-      />
-    </div>
-    <!-- Content -->
-    <div
-      class="absolute col-span-1 py-8 px-10 md:py-16 md:px-20"
-      class:list={heroSide === "right" ? "col-start-2" : "col-start-1"}
-    >
-      <h1 class="mb-3 text-3xl font-bold text-white md:text-5xl xl:text-7xl">
-        {title}
-      </h1>
-      <p class="font-light leading-7 tracking-wide text-slate-200">{summary}</p>
-    </div>
-  </section>
+  <BlogHero img={image} summary={summary} title={title} />
   <div class="px-16 pt-2">
     <BreadCrumbs />
   </div>

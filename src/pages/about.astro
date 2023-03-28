@@ -4,10 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
 
-import { Image, Picture } from "@astrojs/image/components";
-// import uiSketch from "../images/ui-sketch.png";
-// import threeChar from "../images/3char.png";
 import Contact from "../components/astro/Contact.astro";
+import CldImage from "../components/astro/CldImage.astro";
 
 const about = await getEntryBySlug("about", "about");
 const { Content: AboutContent } = await about.render();
@@ -38,18 +36,14 @@ const aboutHero = await getEntryBySlug("hero", "about");
         experiences that meet the needs of your target audience.
       </p>
       <div
-        class="prose mx-auto grid max-w-lg justify-evenly gap-8 lg:max-w-none lg:grid-cols-3"
+        class="prose mx-auto grid max-w-none justify-evenly gap-8 lg:max-w-none lg:grid-cols-3"
       >
-        <div>
+        <div class="flex flex-col items-center">
           <h3>Information Architecture</h3>
-          <Picture
-            class="mx-auto h-44"
-            src="/images/wheelchair.png"
-            alt="Three people collaborating"
-            widths={[200, 400, 800]}
-            aspectRatio="4:3"
-            sizes="(max-width: 800px) 100vw, 800px"
-            fit="inside"
+          <CldImage
+            src="portfolio/illustrations/ui-sketch_lzpzxg"
+            alt="A ui"
+            height={176}
           />
           <p>
             I specialize in organizing digital content to make it easy to find
@@ -57,32 +51,24 @@ const aboutHero = await getEntryBySlug("hero", "about");
             other documentation.
           </p>
         </div>
-        <div>
+        <div class="flex flex-col items-center">
           <h3>Front-end Development</h3>
-          <Picture
-            class="mx-auto h-44"
-            src="/images/3char.png"
+          <CldImage
+            src="portfolio/illustrations/3char_ymzpci"
             alt="Three people collaborating"
-            widths={[200, 400, 800]}
-            aspectRatio="4:3"
-            sizes="(max-width: 800px) 100vw, 800px"
-            fit="inside"
+            height={176}
           />
           <p>
             I use the latest web development technologies to transform design
             concepts into functional, visually appealing interfaces.
           </p>
         </div>
-        <div>
+        <div class="flex flex-col items-center">
           <h3>Accessibility Testing</h3>
-          <Picture
-            class="mx-auto h-44"
-            src="/images/wheelchair.png"
+          <CldImage
+            src="portfolio/illustrations/wheelchair_xemzqd"
             alt="Three people collaborating"
-            widths={[200, 400, 800]}
-            aspectRatio="4:3"
-            sizes="(max-width: 800px) 100vw, 800px"
-            fit="inside"
+            height={176}
           />
           <p>
             I ensure digital products are usable by people all levels of ability

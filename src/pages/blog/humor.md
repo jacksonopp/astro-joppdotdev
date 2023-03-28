@@ -5,7 +5,7 @@ date:
   published: 03/24/2023
   updated:
 image:
-  path: /images/humor.jpg
+  path: portfolio/images/humor_g0ptb9
   alt: A statue with an ice cream cone stuck to its face
   credit: Photo by <a href="https://unsplash.com/@theblowup?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">the blowup</a> on <a href="https://unsplash.com/photos/swDEADSet6Y?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   origin: https://unsplash.com/photos/swDEADSet6Y

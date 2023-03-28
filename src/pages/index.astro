@@ -13,6 +13,7 @@ import ThreeColumn from "../layouts/ThreeColumn.astro";
 // import hpLogo from "../images/hp-logo.png";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
 import Contact from "../components/astro/Contact.astro";
+import CldImage from "../components/astro/CldImage.astro";
 
 const hero = await getEntryBySlug("hero", "hompage");
 ---
@@ -34,7 +35,7 @@ const hero = await getEntryBySlug("hero", "hompage");
           end-users and stakeholders.
         </p>
       </div>
-      <Picture
+      <!-- <Picture
         src="/images/computer.png"
         alt="A computer"
         slot="col2"
@@ -42,6 +43,13 @@ const hero = await getEntryBySlug("hero", "hompage");
         aspectRatio="4:3"
         sizes="(max-width: 800px) 100vw, 800px"
         fit="inside"
+      /> -->
+      <CldImage
+        src="portfolio/illustrations/computer"
+        width={200}
+        height={200}
+        alt="alt"
+        slot="col2"
       />
       <div slot="col3" class="prose">
         <p>
@@ -59,7 +67,6 @@ const hero = await getEntryBySlug("hero", "hompage");
         </p>
       </div>
     </ThreeColumn>
-    <!-- TODO: Make these sections mobile responsive -->
     <section aria-label="companies" class="bg-dark-400">
       <div class="px-16 pt-8">
         <SectionTitle>Companies I've Worked With</SectionTitle>
@@ -67,46 +74,37 @@ const hero = await getEntryBySlug("hero", "hompage");
       <div
         class="mx-auto flex flex-wrap items-center justify-evenly gap-8 px-8 pb-8 pt-4 lg:flex-row lg:px-16 lg:py-16"
       >
-        <Picture
-          src="/images/pearson-logo.png"
-          alt="Pearson"
-          height={64}
-          class="h-16"
-          widths={[200, 400, 800]}
-          aspectRatio="1:1"
-          sizes="(max-width: 800px) 100vw, 800px"
-          fit="inside"
+        <CldImage
+          src="portfolio/logos/pearson-logo"
+          height={75}
+          alt="alt"
+          fit="fit"
         />
-        <Picture
-          src="/images/virtuwell-nohp.png"
-          alt="Virtuwell"
-          height={64}
-          class="h-16"
-          widths={[200, 400, 800]}
-          aspectRatio="1:1"
-          sizes="(max-width: 800px) 100vw, 800px"
-          fit="inside"
+        <CldImage
+          src="portfolio/logos/virtuwell-nohp_nfplmj"
+          height={75}
+          alt="alt"
+          fit="fit"
         />
-        <Picture
-          src="/images/sdg_Logo-1.png"
-          alt="SDG"
-          height={64}
-          class="h-16"
-          widths={[200, 400, 800]}
-          aspectRatio="1:1"
-          sizes="(max-width: 800px) 100vw, 800px"
-          fit="inside"
+        <CldImage
+          src="portfolio/logos/sdg-logo"
+          height={75}
+          alt="alt"
+          fit="fit"
         />
-        <Picture
-          src="/images/onvue-logo.png"
-          alt="Pearson"
-          height={64}
-          class="h-16"
-          widths={[200, 400, 800]}
-          aspectRatio="1:1"
-          sizes="(max-width: 800px) 100vw, 800px"
-          fit="inside"
+        <CldImage
+          src="portfolio/logos/onvue-logo-color"
+          height={75}
+          alt="alt"
+          fit="fit"
         />
+        <CldImage
+          src="portfolio/logos/hp-logo_rtwde9"
+          height={75}
+          alt="alt"
+          fit="fit"
+        />
+        <!-- 
         <Picture
           src="/images/hp-logo.png"
           alt="Health Partners"
@@ -116,7 +114,7 @@ const hero = await getEntryBySlug("hero", "hompage");
           aspectRatio="1:1"
           sizes="(max-width: 800px) 100vw, 800px"
           fit="inside"
-        />
+        /> -->
       </div>
     </section>
     <section class="p-16" aria-labelledby="contact">

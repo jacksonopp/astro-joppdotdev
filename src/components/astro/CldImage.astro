@@ -1,0 +1,105 @@
+---
+import { number } from "astro/zod";
+import { v2 as cloudinary } from "cloudinary";
+
+export type CropMode = "fill" | "lfill" | "fill_pad" | "crop" | "thumb";
+
+export type ResizeModeA = "scale" | "fit" | "limit";
+export type ResizeModeB = "mfit" | "pad" | "lpad" | "mpad";
+export type ResizeMode = ResizeModeA | ResizeModeB;
+
+export type FitMode = CropMode | ResizeMode;
+
+interface Props {
+  width?: number;
+  height?: number;
+  heights?: number[];
+  widths?: number[];
+  src: string;
+  alt: string;
+  gravity?: string;
+  fit?: FitMode;
+  medias?: string[];
+  ratio?: [number, number];
+  class: string;
+}
+
+let { src, height, heights, width, widths, ratio, ...props } = Astro.props;
+
+let sizes: { w: number | undefined; h: number | undefined }[] = [];
+
+// Both w and h
+if (widths !== undefined && heights !== undefined) {
+  if (widths.length !== heights.length) {
+    throw new Error(
+      "`widths` and `heights` must have the same number of items"
+    );
+  }
+
+  sizes = widths.map((w, i) => {
+    return { w: w, h: heights![i] };
+  });
+
+  // w, no h
+} else if (widths !== undefined && heights === undefined) {
+  // With ratio
+  if (ratio) {
+    const wToH = ratio[1] / ratio[0];
+    sizes = widths.map((w) => {
+      return { w, h: Math.floor(w * wToH) };
+    });
+    // Without ratio
+  } else {
+    sizes = widths.map((w) => {
+      return { w, h: height };
+    });
+  }
+} else if (widths === undefined && heights !== undefined) {
+  if (ratio) {
+    const wToH = ratio[0] / ratio[1];
+    sizes = heights.map((h) => {
+      return { h, w: Math.floor(h * wToH) };
+    });
+  } else {
+    sizes = heights.map((h) => {
+      return { w: width, h };
+    });
+  }
+} else {
+  sizes = [{ w: width, h: height }];
+}
+
+console.log("🚀 ~ file: CldImage.astro:27 ~ sizes:", sizes);
+
+cloudinary.config({
+  cloud_name: import.meta.env.CLOUDINARY_NAME,
+  api_key: import.meta.env.CLOUDINARY_API_KEY,
+  api_secret: import.meta.env.CLOUDINARY_API_SECRET,
+});
+
+const urls: { url: string; media: string | undefined }[] = sizes.map(
+  (size, i) => {
+    return {
+      url: cloudinary.url(src, {
+        width: size.w,
+        height: size.h,
+        crop: props.fit ?? "fill",
+      }),
+      media: props.medias ? props.medias[i] : undefined,
+    };
+  }
+);
+
+const url = cloudinary.url(src, {
+  height: height,
+  width: width,
+  crop: props.fit ?? "fill",
+});
+
+console.log(urls);
+---
+
+<picture>
+  {urls.map((s) => <source srcset={s.url} media={s.media} />)}
+  <img {...props} src={url} />
+</picture>
