@@ -21,7 +21,7 @@ interface Props {
   fit?: FitMode;
   medias?: string[];
   ratio?: [number, number];
-  class: string;
+  class?: string;
 }
 
 let { src, height, heights, width, widths, ratio, ...props } = Astro.props;
@@ -83,6 +83,9 @@ const urls: { url: string; media: string | undefined }[] = sizes.map(
         width: size.w,
         height: size.h,
         crop: props.fit ?? "fill",
+        gravity: props.gravity,
+        quality: 500,
+        format: "webp",
       }),
       media: props.medias ? props.medias[i] : undefined,
     };
@@ -98,5 +101,5 @@ const url = cloudinary.url(src, {
 
 <picture>
   {urls.map((s) => <source srcset={s.url} media={s.media} />)}
-  <img {...props} src={url} />
+  <img {...props} src={url} loading="lazy" />
 </picture>
