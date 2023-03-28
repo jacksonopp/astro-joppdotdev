@@ -69,12 +69,11 @@ if (widths !== undefined && heights !== undefined) {
   sizes = [{ w: width, h: height }];
 }
 
-console.log("🚀 ~ file: CldImage.astro:27 ~ sizes:", sizes);
-
 cloudinary.config({
   cloud_name: import.meta.env.CLOUDINARY_NAME,
   api_key: import.meta.env.CLOUDINARY_API_KEY,
   api_secret: import.meta.env.CLOUDINARY_API_SECRET,
+  secure: import.meta.env.DEV ? false : true,
 });
 
 const urls: { url: string; media: string | undefined }[] = sizes.map(
@@ -95,8 +94,6 @@ const url = cloudinary.url(src, {
   width: width,
   crop: props.fit ?? "fill",
 });
-
-console.log(urls);
 ---
 
 <picture>
