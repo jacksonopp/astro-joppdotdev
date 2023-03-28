@@ -148,8 +148,10 @@ if (Astro.request.method === "POST") {
       placeholder="Your message goes here"
     />
   </div>
-  <button class="g-recaptcha" data-sitekey={siteKey} data-callback="onSubmit"
-    >Send Message</button
+  <button
+    class="g-recaptcha rounded-lg bg-accent-600 px-3 py-3 hover:bg-accent-500 active:bg-accent-700"
+    data-sitekey={siteKey}
+    data-callback="onSubmit">Send Message</button
   >
   <!-- <Button color="accent">Send message</Button> -->
 
