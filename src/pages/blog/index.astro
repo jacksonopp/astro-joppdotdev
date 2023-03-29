@@ -3,6 +3,13 @@ import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/astro/PostCard.astro";
 
 let posts = await Astro.glob("./*.md");
+
+posts = posts.sort((a, b) =>
+  new Date(a.frontmatter.date.published) >
+  new Date(b.frontmatter.date.published)
+    ? -1
+    : 1
+);
 ---
 
 <Layout title="Blog | Jackson Oppenheim">
