@@ -18,7 +18,9 @@ interface Props {
 const { img, title, summary, path, published } = Astro.props;
 ---
 
-<div class="flex max-w-none flex-col gap-2 md:gap-4 lg:max-w-sm">
+<div
+  class="flex max-w-none flex-col items-center gap-2 md:items-start md:gap-4 lg:max-w-sm"
+>
   <a
     href={path}
     class="mt-3 text-2xl font-semibold text-primary-900 md:min-h-[4rem] lg:my-[0.5em]"

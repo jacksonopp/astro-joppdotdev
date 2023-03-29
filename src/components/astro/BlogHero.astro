@@ -15,20 +15,22 @@ const { img, title, summary } = Astro.props;
 ---
 
 <section
-  class="grid justify-items-center gap-4 bg-dark-900 p-6 shadow-lg lg:gap-0"
+  class="grid grid-rows-[1fr_auto] justify-items-center gap-4 bg-dark-900 p-6 shadow-lg md:grid-cols-2 md:grid-rows-1 lg:gap-0"
 >
-  <CldImage
-    class="relative row-start-1 rounded-lg shadow md:left-10 lg:left-20"
-    src={img.path}
-    alt={img.alt}
-    widths={[400, 600, 800]}
-    ratio={[16, 9]}
-    medias={["(max-width: 768)", "(max-width: 1024px)"]}
-  />
   <div
-    class="prose absolute row-start-2 -mb-4 h-fit w-9/12 self-end rounded-lg bg-dark-200/80 p-6 shadow-md prose-h1:text-2xl md:left-10 md:p-8 lg:left-4 lg:row-start-1 lg:mb-4 lg:w-fit prose-h1:lg:text-3xl xl:left-24"
+    class="prose relative bottom-12 z-10 row-start-2 h-fit max-w-xs rounded-lg bg-slate-200/80 p-4 md:top-12 md:row-start-1 md:mb-4 md:max-w-prose lg:top-24"
   >
-    <h1>{title}</h1>
-    <p>{summary}</p>
+    <h1 class="text-xl md:text-2xl lg:text-3xl">{title}</h1>
+    <p class="text-sm xl:text-lg">{summary}</p>
+  </div>
+  <div class="relative z-0 row-start-1 md:right-10 lg:bottom-2">
+    <CldImage
+      class="rounded-lg shadow"
+      src={img.path}
+      alt={img.alt}
+      widths={[400, 600, 800]}
+      ratio={[16, 9]}
+      medias={["(max-width: 768)", "(max-width: 1024px)"]}
+    />
   </div>
 </section>

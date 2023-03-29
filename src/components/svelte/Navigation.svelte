@@ -55,7 +55,7 @@
         <a href="/contact">Contact</a>
       </li>
     </ul>
-    <Button color="primary">Contact Me</Button>
+    <Button link href="/contact" color="primary">Contact Me</Button>
   </div>
   <!-- content here -->
   <div
