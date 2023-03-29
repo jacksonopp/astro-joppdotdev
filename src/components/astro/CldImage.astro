@@ -21,10 +21,13 @@ interface Props {
   fit?: FitMode;
   medias?: string[];
   ratio?: [number, number];
+  ratios?: [number, number][];
   class?: string;
+  zoom?: string;
 }
 
-let { src, height, heights, width, widths, ratio, ...props } = Astro.props;
+let { src, height, heights, width, widths, ratio, ratios, ...props } =
+  Astro.props;
 
 let sizes: { w: number | undefined; h: number | undefined }[] = [];
 
@@ -49,6 +52,22 @@ if (widths !== undefined && heights !== undefined) {
       return { w, h: Math.floor(w * wToH) };
     });
     // Without ratio
+  } else if (ratios) {
+    if (ratios.length !== widths.length) {
+      throw new Error(
+        "`ratios` must have the same number of items as `widths`"
+      );
+    }
+
+    sizes = widths.map((w, i) => {
+      const wToH = ratios![i][1] / ratios![i][0];
+      const newSize = { w, h: Math.floor(w * wToH) };
+      console.log(
+        "🚀 ~ file: CldImage.astro:66 ~ sizes=widths.map ~ newSize:",
+        newSize
+      );
+      return newSize;
+    });
   } else {
     sizes = widths.map((w) => {
       return { w, h: height };
@@ -86,6 +105,8 @@ const urls: { url: string; media: string | undefined }[] = sizes.map(
         gravity: props.gravity,
         quality: 500,
         format: "webp",
+        zoom: props.zoom,
+        aspect_ratio: ratio?.join(":"),
       }),
       media: props.medias ? props.medias[i] : undefined,
     };
