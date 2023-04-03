@@ -1,15 +1,30 @@
 ---
+import { Picture } from "@astrojs/image/components";
 import SectionTitle from "../svelte/SectionTitle.svelte";
 
 import { Icon } from "astro-icon";
+import Button from "../svelte/Button.svelte";
 
 const year = new Date().getFullYear();
 ---
 
 <footer>
   <div class="grid bg-dark-800 p-8 text-white sm:grid-cols-2 lg:grid-cols-3">
-    <div>
+    <div class=" max-w-xs">
       <SectionTitle offset theme="accent" dark>About</SectionTitle>
+      <Picture
+        src="/logos/orange-virt.svg"
+        alt="jopp dot dev logo"
+        widths={[150]}
+        sizes="150px"
+        aspectRatio="1:1"
+      />
+      <p class="prose prose-invert">
+        Jackson is a UX Developer and Web Designer in Minneapolis, MN that
+        creates amazing user experiences, and super affordable websites for
+        small businesses and non-profits.
+      </p>
+      <Button link href="/contact">Get in touch</Button>
     </div>
     <nav aria-label="Footer">
       <SectionTitle offset theme="accent" dark>Links</SectionTitle>
