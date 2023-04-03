@@ -14,8 +14,14 @@
   class="flex flex-wrap justify-between items-center lg:px-24 md:px-12 px-6 py-4 dark:bg-slate-100 text-black sticky top-0 z-40 shadow-[0_-10px_20px_2px]"
 >
   <a href="/">
-    <p class="text-primary-600 text-xl font-bold">Jackson Oppenheim</p>
-    <p class="text-sm text-dark-700 tracking-wide font-light">UX Developer</p>
+    <span class="sr-only">Home</span>
+    <img
+      src="/logos/blue-long.svg"
+      class="h-20"
+      alt="jopp dot dev logo"
+    />
+    <!-- <p class="text-primary-600 text-xl font-bold">Jackson Oppenheim</p>
+    <p class="text-sm text-dark-700 tracking-wide font-light">UX Developer</p> -->
   </a>
   <div class="lg:flex gap-8 lg:gap-24 items-center hidden">
     <ul class="flex gap-3 lg:gap-4 font-bold uppercase">
