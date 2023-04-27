@@ -9,7 +9,7 @@
 </script>
 
 <h2
-  class="font-bold text-xl uppercase relative w-fit m-0 section-title mb-[0.5em] z-0 {classes}"
+  class="font-bold text-2xl uppercase relative w-fit m-0 section-title mb-[0.5em] z-0 {classes}"
   class:text-primary-900={primary && !dark}
   class:text-primary-400={primary && dark}
   class:text-accent-700={!primary && !dark}
