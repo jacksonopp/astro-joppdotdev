@@ -62,10 +62,6 @@ if (widths !== undefined && heights !== undefined) {
     sizes = widths.map((w, i) => {
       const wToH = ratios![i][1] / ratios![i][0];
       const newSize = { w, h: Math.floor(w * wToH) };
-      console.log(
-        "🚀 ~ file: CldImage.astro:66 ~ sizes=widths.map ~ newSize:",
-        newSize
-      );
       return newSize;
     });
   } else {

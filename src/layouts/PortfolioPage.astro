@@ -1,16 +1,12 @@
 ---
-import BlogHero from "../components/astro/BlogHero.astro";
 import BreadCrumbs from "../components/astro/BreadCrumbs.astro";
+import CldImage from "../components/astro/CldImage.astro";
 import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
-// const heroSide = frontmatter.heroSide;
-const { heroSide, title, summary, image } = frontmatter;
 ---
 
-<Layout title={frontmatter.title}>
-  <!-- Hero Section -->
-  <BlogHero img={image} summary={summary} title={title} />
+<Layout title={`${frontmatter.title} | Jackson Oppenheim`}>
   <div class="px-16 pt-2">
     <BreadCrumbs />
   </div>
@@ -21,5 +17,3 @@ const { heroSide, title, summary, image } = frontmatter;
     <slot />
   </article>
 </Layout>
-
-<style></style>

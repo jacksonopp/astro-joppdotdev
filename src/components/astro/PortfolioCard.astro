@@ -1,0 +1,49 @@
+---
+import Button from "../svelte/Button.svelte";
+import CldImage from "./CldImage.astro";
+
+interface Props {
+  imgUrl: string;
+  alt: string;
+  title: string;
+  href: string;
+}
+
+const { imgUrl, alt, title, href } = Astro.props;
+---
+
+<div class="relative grid place-items-center rounded-lg">
+  <CldImage
+    class="relative rounded-lg"
+    src={imgUrl}
+    alt={alt}
+    widths={[100, 200, 500]}
+    ratio={[4, 3]}
+    medias={["(max-width: 768px)", "(max-width: 1024px)"]}
+    fit="fill"
+  />
+  <div
+    class="absolute grid h-full w-full place-items-center bg-dark-900/70 opacity-0 hover:opacity-100 rounded-lg"
+  >
+    <div class="bg-white rounded px-16 py-5 flex flex-col items-center gap-4">
+      <p class="font-bold text-lg">{title}</p>
+      <Button link href={href}>
+        <span class="flex gap-2">
+          Learn More <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+          </svg>
+        </span>
+      </Button>
+    </div>
+  </div>
+</div>
