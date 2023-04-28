@@ -50,7 +50,7 @@ const currentPath = pathname.slice(1);
       class="sr-only top-6 left-6 z-50 rounded border border-dark-300 bg-white shadow-lg focus:not-sr-only focus:absolute focus:block focus:p-4"
       >Skip to main content</a
     >
-    <Navigation activePath={currentPath} client:only />
+    <Navigation activePath={currentPath} client:load />
     <div id="main-content">
       <slot />
     </div>
