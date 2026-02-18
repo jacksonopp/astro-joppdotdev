@@ -1,5 +1,4 @@
 ---
-import { number } from "astro/zod";
 import { v2 as cloudinary } from "cloudinary";
 
 export type CropMode = "fill" | "lfill" | "fill_pad" | "crop" | "thumb";
@@ -28,6 +27,16 @@ interface Props {
 
 let { src, height, heights, width, widths, ratio, ratios, ...props } =
   Astro.props;
+
+const cloudName =
+  import.meta.env.CLOUDINARY_NAME ||
+  import.meta.env.CLOUDINARY_CLOUD_NAME ||
+  import.meta.env.PUBLIC_CLOUDINARY_NAME;
+
+const hasCloudinary = Boolean(cloudName);
+
+const isAbsoluteUrl = (value: string) =>
+  value.startsWith("http://") || value.startsWith("https://");
 
 let sizes: { w: number | undefined; h: number | undefined }[] = [];
 
@@ -84,36 +93,46 @@ if (widths !== undefined && heights !== undefined) {
   sizes = [{ w: width, h: height }];
 }
 
-cloudinary.config({
-  cloud_name: import.meta.env.CLOUDINARY_NAME,
-  api_key: import.meta.env.CLOUDINARY_API_KEY,
-  api_secret: import.meta.env.CLOUDINARY_API_SECRET,
-  secure: import.meta.env.DEV ? false : true,
-});
+if (hasCloudinary) {
+  cloudinary.config({
+    cloud_name: cloudName,
+    api_key: import.meta.env.CLOUDINARY_API_KEY,
+    api_secret: import.meta.env.CLOUDINARY_API_SECRET,
+    secure: import.meta.env.DEV ? false : true,
+  });
+} else if (import.meta.env.DEV) {
+  console.warn(
+    "Missing Cloudinary env vars. Set CLOUDINARY_NAME (or PUBLIC_CLOUDINARY_NAME) to enable images."
+  );
+}
 
-const urls: { url: string; media: string | undefined }[] = sizes.map(
-  (size, i) => {
-    return {
-      url: cloudinary.url(src, {
-        width: size.w,
-        height: size.h,
-        crop: props.fit ?? "fill",
-        gravity: props.gravity,
-        quality: 500,
-        format: "webp",
-        zoom: props.zoom,
-        aspect_ratio: ratio?.join(":"),
-      }),
-      media: props.medias ? props.medias[i] : undefined,
-    };
-  }
-);
+const urls: { url: string; media: string | undefined }[] = hasCloudinary
+  ? sizes.map((size, i) => {
+      return {
+        url: cloudinary.url(src, {
+          width: size.w,
+          height: size.h,
+          crop: props.fit ?? "fill",
+          gravity: props.gravity,
+          quality: 500,
+          format: "webp",
+          zoom: props.zoom,
+          aspect_ratio: ratio?.join(":"),
+        }),
+        media: props.medias ? props.medias[i] : undefined,
+      };
+    })
+  : [];
 
-const url = cloudinary.url(src, {
-  height: height,
-  width: width,
-  crop: props.fit ?? "fill",
-});
+const url = hasCloudinary
+  ? cloudinary.url(src, {
+      height: height,
+      width: width,
+      crop: props.fit ?? "fill",
+    })
+  : isAbsoluteUrl(src)
+    ? src
+    : "";
 ---
 
 <picture>
