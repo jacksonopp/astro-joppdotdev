@@ -1,5 +1,5 @@
 ---
-import { getEntryBySlug } from "astro:content";
+import { getEntry, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
@@ -7,10 +7,12 @@ import SectionTitle from "../components/svelte/SectionTitle.svelte";
 import Contact from "../components/astro/Contact.astro";
 import CldImage from "../components/astro/CldImage.astro";
 
-const about = await getEntryBySlug("about", "about");
-const { Content: AboutContent } = await about.render();
+const about = await getEntry("about", "about");
+if (!about) throw new Error("About content not found");
+const { Content: AboutContent } = await render(about);
 
-const aboutHero = await getEntryBySlug("hero", "about");
+const aboutHero = await getEntry("hero", "about");
+if (!aboutHero) throw new Error("About hero content not found");
 ---
 
 <Layout title="About | Jackson Oppenheim">

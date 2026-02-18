@@ -1,16 +1,17 @@
 ---
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
-import Contact from "../components/astro/Contact.astro";
+import ContactForm from "../components/astro/Contact.astro";
 import { z } from "astro:content";
 
-const contactHero = await getEntryBySlug("hero", "contact");
+const contactHero = await getEntry("hero", "contact");
+if (!contactHero) throw new Error("Contact hero content not found");
 ---
 
 <Layout title="Contact Me | Jackson Oppenheim">
   <Hero heroContent={contactHero} />
   <main class="px-auto mx-auto p-8 lg:max-w-3xl">
-    <Contact />
+    <ContactForm />
   </main>
 </Layout>

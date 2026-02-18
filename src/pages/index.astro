@@ -1,9 +1,8 @@
 ---
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 
-import { Image, Picture } from "@astrojs/image/components";
 import ThreeColumn from "../layouts/ThreeColumn.astro";
 // import computerPng from "../images/computer.png";
 // import pearsonLogo from "../images/pearson-logo.png";
@@ -15,7 +14,8 @@ import SectionTitle from "../components/svelte/SectionTitle.svelte";
 import Contact from "../components/astro/Contact.astro";
 import CldImage from "../components/astro/CldImage.astro";
 
-const hero = await getEntryBySlug("hero", "hompage");
+const hero = await getEntry("hero", "hompage");
+if (!hero) throw new Error("Homepage hero content not found");
 ---
 
 <Layout title="Jackson Oppenheim, UX Developer">

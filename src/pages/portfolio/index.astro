@@ -1,12 +1,13 @@
 ---
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/astro/Hero.astro";
 import SectionTitle from "../../components/svelte/SectionTitle.svelte";
 import CldImage from "../../components/astro/CldImage.astro";
 import PortfolioCard from "../../components/astro/PortfolioCard.astro";
 
-const portfolioHero = await getEntryBySlug("hero", "portfolio");
+const portfolioHero = await getEntry("hero", "portfolio");
+if (!portfolioHero) throw new Error("Portfolio hero content not found");
 ---
 
 <Layout title="Portfolio | Jackson Oppenheim">

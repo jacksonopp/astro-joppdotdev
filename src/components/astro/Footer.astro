@@ -1,5 +1,4 @@
 ---
-import { Picture } from "@astrojs/image/components";
 import SectionTitle from "../svelte/SectionTitle.svelte";
 
 import { Icon } from "astro-icon";
@@ -12,12 +11,11 @@ const year = new Date().getFullYear();
   <div class="grid bg-dark-800 p-8 text-white sm:grid-cols-2 lg:grid-cols-3">
     <div class=" max-w-xs">
       <SectionTitle offset theme="accent" dark>About</SectionTitle>
-      <Picture
+      <img
         src="/logos/orange-virt.svg"
         alt="jopp dot dev logo"
-        widths={[150]}
-        sizes="150px"
-        aspectRatio="1:1"
+        width="150"
+        height="150"
       />
       <div class="flex flex-col gap-6">
         <p class="prose prose-invert">

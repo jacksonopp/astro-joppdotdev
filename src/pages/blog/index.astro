@@ -2,7 +2,19 @@
 import Layout from "../../layouts/Layout.astro";
 import PostCard from "../../components/astro/PostCard.astro";
 
-let posts = await Astro.glob("./*.md");
+type MarkdownPost = {
+  frontmatter: {
+    image: string;
+    summary: string;
+    title: string;
+    date: {
+      published: string;
+    };
+  };
+  url: string;
+};
+
+let posts = Object.values(import.meta.glob<MarkdownPost>("./*.md", { eager: true }));
 
 posts = posts.sort((a, b) =>
   new Date(a.frontmatter.date.published) >

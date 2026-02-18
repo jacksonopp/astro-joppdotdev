@@ -21,7 +21,7 @@
     class={className}
     rows="5"
     maxlength={maxLen}
-  />
+  ></textarea>
   <p class="text-sm text-dark-700">
     Characters Remaining: {charLeft}
   </p>
