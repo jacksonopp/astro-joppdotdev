@@ -3,13 +3,14 @@ import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import vercel from "@astrojs/vercel";
+import icon from "astro-icon";
 
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [svelte(), tailwind(), mdx(), partytown()],
+  integrations: [svelte(), tailwind(), mdx(), icon(), partytown()],
   adapter: vercel({
     analytics: true
   })
