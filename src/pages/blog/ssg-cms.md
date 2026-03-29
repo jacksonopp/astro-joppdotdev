@@ -7,7 +7,7 @@ date:
   updated:
 image:
   path: portfolio/images/future_t9zroz
-  alt: colorful lines created by car tail lights
+  alt: futuristic man with futuristic glasses
   credit: Photo by <a href="https://unsplash.com/@24ameer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ameer Basheer</a> on <a href="https://unsplash.com/photos/2r5adxul49E?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   origin: https://unsplash.com/photos/2r5adxul49E
 layout: ../../layouts/BlogPost.astro
