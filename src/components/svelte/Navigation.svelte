@@ -11,7 +11,6 @@
     { href: "/", label: "Home", match: "" },
     { href: "/about", label: "About", match: "about" },
     { href: "/portfolio", label: "Portfolio", match: "portfolio" },
-    { href: "/blog", label: "Blog", match: "blog" },
     { href: "/contact", label: "Contact", match: "contact" },
   ];
 

@@ -8,7 +8,7 @@ const { frontmatter } = Astro.props;
 const { heroSide, title, summary, image } = frontmatter;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} noindex>
   <!-- Hero Section -->
   <BlogHero img={image} summary={summary} title={title} />
   <div class="mx-auto max-w-4xl px-8 pt-8 md:px-0">
