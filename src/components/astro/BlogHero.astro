@@ -16,7 +16,11 @@ const { img, title, summary } = Astro.props;
 
 <section class="relative overflow-hidden bg-primary-950 px-8 py-16 text-white md:px-16 md:py-20">
   <div
-    class="pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full bg-accent-500/25 blur-[100px]"
+    class="motion-safe:animate-drift-a pointer-events-none absolute -top-32 -right-16 h-72 w-72 rounded-full bg-accent-500/25 blur-[100px]"
+  >
+  </div>
+  <div
+    class="motion-safe:animate-drift-b pointer-events-none absolute -bottom-24 left-0 h-64 w-64 rounded-full bg-primary-400/20 blur-[90px]"
   >
   </div>
   <div

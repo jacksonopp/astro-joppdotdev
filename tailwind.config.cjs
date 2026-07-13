@@ -31,6 +31,25 @@ module.exports = {
         card: "0 8px 30px -8px rgb(0 0 0 / 0.12)",
         "card-hover": "0 16px 40px -12px rgb(0 0 0 / 0.2)",
       },
+      keyframes: {
+        "drift-a": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(-5%, 6%) scale(1.1)" },
+        },
+        "drift-b": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(6%, -4%) scale(0.92)" },
+        },
+        "grid-pan": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "22px 22px" },
+        },
+      },
+      animation: {
+        "drift-a": "drift-a 16s ease-in-out infinite",
+        "drift-b": "drift-b 20s ease-in-out infinite",
+        "grid-pan": "grid-pan 12s linear infinite",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
