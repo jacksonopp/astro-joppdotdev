@@ -24,7 +24,7 @@ if (!hero) throw new Error("Homepage hero content not found");
 
     <ThreeColumn title="About Me" id="about-me">
       <div slot="col1" class="prose prose-slate">
-        <h3 class="mb-[0.5em] text-3xl font-bold">
+        <h3 class="font-display mb-[0.5em] text-3xl font-bold text-dark-900">
           UX Development Expertise and Passion
         </h3>
         <p>
@@ -37,6 +37,7 @@ if (!hero) throw new Error("Homepage hero content not found");
       </div>
 
       <CldImage
+        class="rounded-2xl shadow-card"
         src="portfolio/images/IMG_1630_ahx0ak"
         width={400}
         alt="alt"
@@ -62,53 +63,58 @@ if (!hero) throw new Error("Homepage hero content not found");
         </p>
       </div>
     </ThreeColumn>
-    <section aria-label="companies" class="bg-dark-400">
-      <div class="px-16 pt-8">
+    <section aria-label="companies" class="border-y border-dark-100 bg-dark-50">
+      <div class="mx-auto max-w-6xl px-8 pt-12 md:px-16">
         <SectionTitle>Companies I've Worked With</SectionTitle>
       </div>
       <div
-        class="mx-auto flex flex-wrap items-center justify-evenly gap-8 px-8 pb-8 pt-4 lg:flex-row lg:px-16 lg:py-16"
+        class="mx-auto flex max-w-6xl flex-wrap items-center justify-evenly gap-x-12 gap-y-8 px-8 pb-12 pt-4 lg:flex-row lg:px-16 lg:pb-16"
       >
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/pearson-logo"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/onvue-logo-color"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/sdg-logo"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/osn_logo_mdmftc"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/new_vw_logo_scgdnb"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
         <CldImage
+          class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/hp-logo_rtwde9"
-          height={75}
+          height={60}
           alt="alt"
           fit="fit"
         />
-
       </div>
     </section>
-    <section class="p-16" aria-labelledby="contact">
+    <section class="mx-auto max-w-4xl px-8 py-16 md:px-16 md:py-24" aria-labelledby="contact">
       <SectionTitle id="contact">Contact Me</SectionTitle>
       <Contact />
     </section>

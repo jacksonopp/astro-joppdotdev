@@ -21,31 +21,74 @@ const { Content } = await heroContent.render();
 
 <section
   aria-labelledby="hero-title"
-  class="grid w-full bg-dark-900 py-8 px-8 text-white md:px-20 md:py-16"
-  class:list={[
-    {
-      "lg:grid-cols-[2fr_1fr]": twoColumns && textSide === "left",
-      "lg:grid-cols-[1fr_2fr]": twoColumns && textSide === "right",
-      "justify-center": !twoColumns,
-    },
-  ]}
+  class="relative overflow-hidden bg-primary-950 py-20 px-8 text-white md:px-20 md:py-28"
 >
-  <!-- <!-- class:list={twoColumns ? " grid-cols-[2fr_1fr]" : ""} -->
   <div
-    class="grid gap-8"
-    class:list={[textSide === "left" ? "lg:col-start-1" : "lg:col-start-2"]}
+    class="pointer-events-none absolute inset-0 opacity-[0.07]"
+    style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 22px 22px;"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -top-40 -right-24 h-96 w-96 rounded-full bg-accent-500/30 blur-[110px]"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-primary-400/20 blur-[100px]"
+  >
+  </div>
+
+  <div
+    class="relative grid w-full items-center gap-12"
+    class:list={[
+      {
+        "lg:grid-cols-[2fr_1fr]": twoColumns && textSide === "left",
+        "lg:grid-cols-[1fr_2fr]": twoColumns && textSide === "right",
+        "justify-center": !twoColumns,
+      },
+    ]}
   >
     <div
-      class="prose prose-invert max-w-none prose-headings:mb-[0.5em] prose-h1:text-6xl prose-p:text-lg md:prose-h1:text-7xl md:prose-p:text-xl"
-      class:list={[
-        {
-          "lg:prose-h1:text-6xl prose-h1:font-semibold prose-headings:mb-0":
-            !twoColumns,
-        },
-      ]}
+      class="grid gap-8"
+      class:list={[textSide === "left" ? "lg:col-start-1" : "lg:col-start-2"]}
     >
-      <Content />
+      <div
+        class="prose prose-invert max-w-none prose-headings:mb-[0.5em] prose-headings:font-display prose-h1:text-5xl prose-h1:font-semibold prose-h1:leading-[1.1] prose-p:text-lg prose-p:text-primary-100/90 md:prose-h1:text-6xl md:prose-p:text-xl"
+        class:list={[
+          {
+            "lg:prose-h1:text-6xl prose-headings:mb-0": !twoColumns,
+          },
+        ]}
+      >
+        <Content />
+      </div>
+      {
+        cta && (
+          <div class="flex flex-wrap items-center gap-4">
+            <Button color="accent">Contact me</Button>
+            <Button link href="/portfolio" variant="outline" invert>
+              View my work
+            </Button>
+          </div>
+        )
+      }
     </div>
-    {cta && <Button>Contact me</Button>}
+
+    {
+      twoColumns && (
+        <div class="relative hidden lg:block" aria-hidden="true">
+          <div class="relative mx-auto aspect-square w-full max-w-sm">
+            <div class="absolute inset-0 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-sm" />
+            <div class="absolute inset-6 rounded-[2rem] border border-white/10" />
+            <div class="absolute inset-0 grid place-items-center">
+              <img
+                src="/logos/orange-virt.svg"
+                alt=""
+                class="w-2/3 opacity-90"
+              />
+            </div>
+          </div>
+        </div>
+      )
+    }
   </div>
 </section>

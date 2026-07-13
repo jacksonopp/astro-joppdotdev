@@ -5,17 +5,25 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Page Not Found">
-  <div class="px-16 py-8">
+  <div class="px-8 py-8 md:px-16">
     <BreadCrumbs omitCurrentPage={true} />
   </div>
   <div
-    class="grid h-[calc(100vh-500px)] grid-rows-[auto_1fr] justify-center justify-items-center p-8 lg:h-[calc(100vh-300px)]"
+    class="mx-auto grid max-w-2xl grid-rows-[auto_1fr] justify-center justify-items-center gap-8 px-8 py-16 text-center"
   >
-    <h1 class="text-5xl">Oops! Looks like we couldn't find this page.</h1>
+    <h1 class="font-display text-3xl font-bold text-dark-900 md:text-4xl">
+      Oops! Looks like we couldn't find this page.
+    </h1>
     <CldImage
       src="portfolio/illustrations/lost_fjbxvh"
       alt="Three people collaborating"
-      height={384}
+      height={320}
     />
+    <a
+      href="/"
+      class="inline-flex w-fit items-center justify-center gap-2 rounded-full bg-primary-700 px-6 py-3 text-sm font-semibold tracking-wide text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-card"
+    >
+      Back to home
+    </a>
   </div>
 </Layout>

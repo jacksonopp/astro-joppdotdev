@@ -19,70 +19,79 @@ if (!aboutHero) throw new Error("About hero content not found");
   <Hero heroContent={aboutHero} />
   <main class="px-8">
     <article
-      class="flex flex-col-reverse items-center justify-center gap-12 pt-8 pb-16 md:px-0 lg:flex-row"
+      class="mx-auto flex max-w-6xl flex-col-reverse items-center justify-center gap-12 py-16 md:px-0 md:py-24 lg:flex-row"
     >
-      <div class="prose prose-headings:text-primary-900">
+      <div class="prose prose-headings:font-display prose-headings:text-dark-900 prose-a:text-primary-700">
         <AboutContent />
       </div>
-      <figure class="prose max-w-none">
+      <figure class="m-0 shrink-0">
         <CldImage
+          class="w-64 rounded-2xl shadow-card md:w-80"
           src="portfolio/images/IMG_1647_dhrfc1"
           alt="Jackson sitting with a glass of wine"
           widths={[200, 400]}
           medias={["(max-width): 1000px"]}
           ratio={[1, 1]}
         />
-        <figcaption>I've been also known to enjoy a glass of wine.</figcaption>
+        <figcaption class="mt-3 text-center text-sm text-dark-500">
+          I've been also known to enjoy a glass of wine.
+        </figcaption>
       </figure>
     </article>
   </main>
-  <section class="bg-dark-300 text-white">
-    <div class="p-8 lg:p-16">
-      <div
-        class="relative -left-10 flex justify-center lg:left-0 lg:justify-start"
-      >
-        <SectionTitle>What I Can Do For You</SectionTitle>
-      </div>
-      <p class="prose mx-auto flex-grow lg:max-w-none">
+  <section class="border-y border-dark-100 bg-dark-50">
+    <div class="mx-auto max-w-6xl px-8 py-16 lg:px-16 lg:py-24">
+      <SectionTitle>What I Can Do For You</SectionTitle>
+      <p class="max-w-2xl text-lg text-dark-600">
         Here are some of the ways I can help you create exceptional digital
         experiences that meet the needs of your target audience.
       </p>
-      <div
-        class="prose mx-auto grid max-w-none justify-evenly gap-8 lg:max-w-none lg:grid-cols-3"
-      >
-        <div class="flex flex-col items-center">
-          <h3>Information Architecture</h3>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        <div
+          class="flex flex-col items-center gap-4 rounded-2xl bg-white p-8 text-center shadow-soft"
+        >
           <CldImage
             src="portfolio/illustrations/ui-sketch_lzpzxg"
             alt="A ui"
-            height={176}
+            height={140}
           />
-          <p>
+          <h3 class="font-display text-xl font-bold text-dark-900">
+            Information Architecture
+          </h3>
+          <p class="text-dark-600">
             I specialize in organizing digital content to make it easy to find
             and navigate through the creation of site maps, wireframes, and
             other documentation.
           </p>
         </div>
-        <div class="flex flex-col items-center">
-          <h3>Front-end Development</h3>
+        <div
+          class="flex flex-col items-center gap-4 rounded-2xl bg-white p-8 text-center shadow-soft"
+        >
           <CldImage
             src="portfolio/illustrations/3char_ymzpci"
             alt="Three people collaborating"
-            height={176}
+            height={140}
           />
-          <p>
+          <h3 class="font-display text-xl font-bold text-dark-900">
+            Front-end Development
+          </h3>
+          <p class="text-dark-600">
             I use the latest web development technologies to transform design
             concepts into functional, visually appealing interfaces.
           </p>
         </div>
-        <div class="flex flex-col items-center">
-          <h3>Accessibility Testing</h3>
+        <div
+          class="flex flex-col items-center gap-4 rounded-2xl bg-white p-8 text-center shadow-soft"
+        >
           <CldImage
             src="portfolio/illustrations/wheelchair_xemzqd"
             alt="Three people collaborating"
-            height={176}
+            height={140}
           />
-          <p>
+          <h3 class="font-display text-xl font-bold text-dark-900">
+            Accessibility Testing
+          </h3>
+          <p class="text-dark-600">
             I ensure digital products are usable by people all levels of ability
             by testing for compliance with web accessibility standards, such as
             WCAG 2.1, and identifying and addressing accessibility issues.
@@ -91,7 +100,7 @@ if (!aboutHero) throw new Error("About hero content not found");
       </div>
     </div>
   </section>
-  <section class="p-8 md:p-16">
+  <section class="mx-auto max-w-4xl px-8 py-16 md:px-16 md:py-24">
     <SectionTitle>Contact me</SectionTitle>
 
     <Contact />

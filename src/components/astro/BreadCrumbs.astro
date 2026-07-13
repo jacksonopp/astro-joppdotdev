@@ -18,18 +18,19 @@ const pathLinks = paths.map((path, i) => {
 });
 ---
 
-<nav aria-label="breadcrumbs" class="text-center md:text-start">
-  <span class="text-gray-700"
-    ><a href="/" class="hover:underline">home</a> /</span
-  >
+<nav
+  aria-label="breadcrumbs"
+  class="flex flex-wrap items-center justify-center gap-1.5 text-sm text-dark-500 md:justify-start"
+>
+  <a href="/" class="transition-colors hover:text-primary-700">home</a>
   {
     pathLinks.map((path) => (
-      <span class="text-gray-700 hover:text-slate-900">
-        <a href={path.url} class="hover:underline">
+      <>
+        <span class="text-dark-300">/</span>
+        <a href={path.url} class="transition-colors hover:text-primary-700">
           {path.name}
         </a>
-        /
-      </span>
+      </>
     ))
   }
 </nav>

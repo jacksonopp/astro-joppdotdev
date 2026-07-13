@@ -1,133 +1,119 @@
 <script lang="ts">
   import Button from "../svelte/Button.svelte";
-  import Icon from "@iconify/svelte";
-  import { fly, fade, slide } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
 
   export let activePath: string;
 
   let sidebarOpen = false;
   const toggleSidebar = () => (sidebarOpen = !sidebarOpen);
+
+  const links = [
+    { href: "/", label: "Home", match: "" },
+    { href: "/about", label: "About", match: "about" },
+    { href: "/portfolio", label: "Portfolio", match: "portfolio" },
+    { href: "/blog", label: "Blog", match: "blog" },
+    { href: "/contact", label: "Contact", match: "contact" },
+  ];
+
+  const isActive = (match: string) =>
+    match === "" ? activePath === "" : activePath.includes(match);
 </script>
 
 <nav
   aria-label="Primary"
-  class="flex flex-wrap justify-between items-center lg:px-24 md:px-12 px-6 py-4 dark:bg-slate-100 text-black sticky top-0 z-40 shadow-[0_-10px_20px_2px]"
+  class="sticky top-0 z-40 border-b border-dark-200/70 bg-white/80 px-6 py-3 backdrop-blur-md md:px-12 lg:px-24"
 >
-  <a href="/">
-    <span class="sr-only">Home</span>
-    <img
-      src="/logos/blue-long.svg"
-      class="h-20"
-      alt="jopp dot dev logo"
-    />
-    <!-- <p class="text-primary-600 text-xl font-bold">Jackson Oppenheim</p>
-    <p class="text-sm text-dark-700 tracking-wide font-light">UX Developer</p> -->
-  </a>
-  <div class="lg:flex gap-8 lg:gap-24 items-center hidden">
-    <ul class="flex gap-3 lg:gap-4 font-bold uppercase">
-      <li
-        class="hover:text-gray-800 transition-[text-decoration-line] hover:underline hover:text-gray-700 duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath === ""}
-        class:underline={activePath === ""}
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <a href="/" class="shrink-0">
+      <span class="sr-only">Home</span>
+      <img src="/logos/blue-long.svg" class="h-14" alt="jopp dot dev logo" />
+    </a>
+
+    <div class="hidden items-center gap-2 lg:flex">
+      <ul class="flex items-center gap-1 text-sm font-semibold">
+        {#each links as { href, label, match }}
+          <li>
+            <a
+              {href}
+              class="rounded-full px-4 py-2 transition-colors duration-150"
+              class:bg-primary-50={isActive(match)}
+              class:text-primary-800={isActive(match)}
+              class:text-dark-600={!isActive(match)}
+              class:hover:bg-dark-100={!isActive(match)}
+              class:hover:text-dark-900={!isActive(match)}
+            >
+              {label}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </div>
+
+    <div class="hidden lg:block">
+      <Button link href="/contact" color="primary">Contact Me</Button>
+    </div>
+
+    <div class="block lg:hidden">
+      <button
+        on:click={toggleSidebar}
+        aria-expanded={sidebarOpen}
+        aria-label="Toggle navigation menu"
+        class="grid h-11 w-11 place-items-center rounded-full border border-dark-200 text-dark-700 transition-colors hover:bg-dark-100 active:bg-primary-100"
       >
-        <a href="/">Home</a>
-      </li>
-      <li
-        class="hover:text-gray-800 transition-[text-decoration-line] hover:underline hover:text-gray-700 duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath.includes("about")}
-        class:underline={activePath.includes("about")}
-      >
-        <a href="/about">About</a>
-      </li>
-      <li
-        class="hover:text-gray-800 transition-[text-decoration-line] hover:underline hover:text-gray-700 duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath.includes("portfolio")}
-        class:underline={activePath.includes("portfolio")}
-      >
-        <a href="/portfolio">Portfolio</a>
-      </li>
-      <li
-        class="hover:text-gray-800 transition-[text-decoration-line] hover:underline hover:text-gray-700 duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath.includes("blog")}
-        class:underline={activePath.includes("blog")}
-      >
-        <a href="/blog">Blog</a>
-      </li>
-      <li
-        class="hover:text-gray-800 transition-[text-decoration-line] hover:underline hover:text-gray-700 duration-200 cursor-pointer underline-offset-2"
-        class:text-primary-700={activePath.includes("contact")}
-        class:underline={activePath.includes("contact")}
-      >
-        <a href="/contact">Contact</a>
-      </li>
-    </ul>
-    <Button link href="/contact" color="primary">Contact Me</Button>
+        {#if sidebarOpen}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        {:else}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+        {/if}
+      </button>
+    </div>
   </div>
-  <!-- content here -->
-  <div
-    out:fade={{ duration: 150 }}
-    in:fade={{ delay: 400, duration: 150 }}
-    class="block lg:hidden"
-  >
-    <button
-      on:click={toggleSidebar}
-      class="grid place-items-center w-10 h-10 border-2 border-slate-600 text-slate-600 rounded-lg active:bg-accent-600/30"
-    >
-      <Icon icon="ic:round-menu" height={30} />
-    </button>
-  </div>
+
   {#if sidebarOpen}
-    <div in:slide out:slide={{ delay: 60 }} class="flex-grow w-full">
-      <ul class="flex flex-col text-lg py-12 px-6 gap-6">
-        <li
-          class="underline-offset-2"
-          class:text-primary-400={activePath === ""}
-          class:text-opacity-90={activePath === ""}
-          class:underline={activePath === ""}
-          in:fly={{ x: -100 }}
-          out:fly={{ x: -100, delay: 200 }}
-        >
-          <a href="/">Home</a>
-        </li>
-        <li
-          class="underline-offset-2"
-          class:text-primary-400={activePath === "about"}
-          class:text-opacity-90={activePath === "about"}
-          class:underline={activePath === "about"}
-          in:fly={{ x: -100, delay: 50 }}
-          out:fly={{ x: -100, delay: 150 }}
-        >
-          <a href="/about">About</a>
-        </li>
-        <li
-          class="underline-offset-2"
-          class:text-primary-400={activePath === "portfolio"}
-          class:text-opacity-90={activePath === "portfolio"}
-          class:underline={activePath === "portfolio"}
-          in:fly={{ x: -100, delay: 100 }}
-          out:fly={{ x: -100, delay: 100 }}
-        >
-          <a href="/portfolio">Portfolio</a>
-        </li>
-        <li
-          class="underline-offset-2"
-          class:text-primary-400={activePath === "blog"}
-          class:text-opacity-90={activePath === "blog"}
-          class:underline={activePath === "blog"}
-          in:fly={{ x: -100, delay: 150 }}
-          out:fly={{ x: -100, delay: 50 }}
-        >
-          <a href="/blog">Blog</a>
-        </li>
-        <li
-          class="underline-offset-2"
-          class:text-primary-400={activePath === "contact"}
-          class:text-opacity-90={activePath === "contact"}
-          class:underline={activePath === "contact"}
-          in:fly={{ x: -100, delay: 200 }}
-          out:fly={{ x: -100 }}
-        >
-          <a href="/contact">Contact</a>
+    <div
+      in:slide={{ duration: 200 }}
+      out:slide={{ duration: 150 }}
+      class="w-full lg:hidden"
+    >
+      <ul class="flex flex-col gap-1 py-6 text-lg font-semibold">
+        {#each links as { href, label, match }}
+          <li in:fade={{ duration: 150 }}>
+            <a
+              {href}
+              class="block rounded-xl px-4 py-3 transition-colors"
+              class:bg-primary-50={isActive(match)}
+              class:text-primary-800={isActive(match)}
+              class:text-dark-700={!isActive(match)}
+            >
+              {label}
+            </a>
+          </li>
+        {/each}
+        <li class="px-4 pt-2">
+          <Button link href="/contact" color="primary">Contact Me</Button>
         </li>
       </ul>
     </div>

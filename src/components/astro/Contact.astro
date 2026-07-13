@@ -1,5 +1,4 @@
 ---
-import Button from "../svelte/Button.svelte";
 import { type ZodError, z } from "astro/zod";
 import CountableTextArea from "../svelte/CountableTextArea.svelte";
 
@@ -64,9 +63,9 @@ if (Astro.request.method === "POST") {
 
 {
   hasErrors && (
-    <div class="border-dark-200 mb-6 rounded border border-l-4 border-l-red-600 bg-white py-2 pl-4 pr-2 shadow-md">
-      <p>Please correct the following errors:</p>
-      <ul class="list-inside list-disc">
+    <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800 shadow-soft">
+      <p class="font-semibold">Please correct the following errors:</p>
+      <ul class="mt-1 list-inside list-disc">
         {errors.name?.map((err) => (
           <li>{err}</li>
         ))}
@@ -84,14 +83,14 @@ if (Astro.request.method === "POST") {
   )
 }
 <form
-  class="grid gap-x-16 gap-y-8 md:grid-cols-3"
+  class="grid gap-x-8 gap-y-6 md:grid-cols-3"
   method="post"
   id="contact-form"
 >
-  <div class="grid gap-1">
+  <div class="grid gap-2">
     <label
       for="name"
-      class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
+      class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
       data-after="*">Name</label
     >
     <input
@@ -99,14 +98,14 @@ if (Astro.request.method === "POST") {
       type="text"
       name="name"
       id="name"
-      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 invalid:required:border-dark-200 invalid:required:ring-0"
       placeholder="me@example.com"
     />
   </div>
-  <div class="grid gap-1">
+  <div class="grid gap-2">
     <label
       for="email"
-      class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
+      class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
       data-after="*">Email</label
     >
     <input
@@ -114,14 +113,14 @@ if (Astro.request.method === "POST") {
       type="email"
       name="email"
       id="email"
-      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 invalid:required:border-dark-200 invalid:required:ring-0"
       placeholder="me@example.com"
     />
   </div>
-  <div class="grid gap-1">
+  <div class="grid gap-2">
     <label
       for="phone"
-      class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
+      class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
       data-after="*">Phone (555-555-5555)</label
     >
     <input
@@ -129,14 +128,14 @@ if (Astro.request.method === "POST") {
       type="tel"
       name="phone"
       id="phone"
-      class="rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      class="rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 invalid:required:border-dark-200 invalid:required:ring-0"
       placeholder="555-555-5555"
     />
   </div>
-  <div class="grid gap-1 md:col-span-3">
+  <div class="grid gap-2 md:col-span-3">
     <label
       for="message"
-      class="text-sm font-bold uppercase text-dark-700 after:content-[attr(data-after)]"
+      class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
       data-after="*">Message</label
     >
     <CountableTextArea
@@ -144,16 +143,15 @@ if (Astro.request.method === "POST") {
       required
       name="message"
       id="message"
-      className="w-full rounded-md border border-dark-800 p-2 invalid:outline invalid:outline-2 invalid:outline-red-600 invalid:required:outline-none focus-within:outline-2 focus-within:outline-primary-500"
+      className="w-full rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
       placeholder="Your message goes here"
     />
   </div>
   <button
-    class="g-recaptcha rounded-lg bg-accent-600 px-3 py-3 hover:bg-accent-500 active:bg-accent-700"
+    class="g-recaptcha inline-flex w-fit items-center justify-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold tracking-wide text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-card"
     data-sitekey={siteKey}
     data-callback="onSubmit">Send Message</button
   >
-  <!-- <Button color="accent">Send message</Button> -->
 
   <script async src="https://www.google.com/recaptcha/api.js"></script>
 
