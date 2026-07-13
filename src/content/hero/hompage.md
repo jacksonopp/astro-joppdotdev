@@ -1,3 +1,3 @@
-# Jackson is a UX and Front-end Developer in Minneapolis, MN.
+# Jackson Oppenheim, UX & Front-end Developer in Minneapolis, MN.
 
-I can empower your digital product with my UX development expertise, creating engaging and intuitive user experiences that meet your business goals and drive success.
+I design and build interfaces that hold up under real use — clear enough for first-time users, and solid enough that nobody notices the engineering underneath.
