@@ -34,21 +34,16 @@ module.exports = {
       keyframes: {
         "drift-a": {
           "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(-5%, 6%) scale(1.1)" },
+          "50%": { transform: "translate(-18%, 20%) scale(1.35)" },
         },
         "drift-b": {
           "0%, 100%": { transform: "translate(0, 0) scale(1)" },
-          "50%": { transform: "translate(6%, -4%) scale(0.92)" },
-        },
-        "grid-pan": {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "22px 22px" },
+          "50%": { transform: "translate(22%, -16%) scale(0.7)" },
         },
       },
       animation: {
-        "drift-a": "drift-a 16s ease-in-out infinite",
-        "drift-b": "drift-b 20s ease-in-out infinite",
-        "grid-pan": "grid-pan 12s linear infinite",
+        "drift-a": "drift-a 9s ease-in-out infinite",
+        "drift-b": "drift-b 11s ease-in-out infinite",
       },
     },
   },
