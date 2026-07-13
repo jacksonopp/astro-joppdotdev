@@ -40,23 +40,30 @@ const contactSchema = z.object({
 });
 
 if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const formData = contactSchema.parse(Object.fromEntries(data));
-    const headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    console.log(formData);
-    fetch("https://eoiv8u9dtix4tl1.m.pipedream.net", {
-      method: "POST",
-      headers,
-      mode: "cors",
-      body: JSON.stringify(formData),
-    });
-  } catch (error) {
-    hasErrors = true;
-    const e = error as ZodError;
-    errors = e.flatten<Errors>().fieldErrors;
-    console.error(errors);
+  const data = await Astro.request.formData();
+  // Honeypot: real visitors never see or fill this field, so a filled-in
+  // value means the submission came from a bot. Drop it silently rather
+  // than surfacing an error, so the bot has no signal that it was caught.
+  const honeypot = data.get("company");
+
+  if (!honeypot) {
+    try {
+      const formData = contactSchema.parse(Object.fromEntries(data));
+      const headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      console.log(formData);
+      fetch("https://eoiv8u9dtix4tl1.m.pipedream.net", {
+        method: "POST",
+        headers,
+        mode: "cors",
+        body: JSON.stringify(formData),
+      });
+    } catch (error) {
+      hasErrors = true;
+      const e = error as ZodError;
+      errors = e.flatten<Errors>().fieldErrors;
+      console.error(errors);
+    }
   }
 }
 ---
@@ -87,6 +94,19 @@ if (Astro.request.method === "POST") {
   method="post"
   id="contact-form"
 >
+  <div
+    class="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden opacity-0"
+    aria-hidden="true"
+  >
+    <label for="company">Company</label>
+    <input
+      type="text"
+      name="company"
+      id="company"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
   <div class="grid gap-2">
     <label
       for="name"
