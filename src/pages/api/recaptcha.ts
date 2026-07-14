@@ -1,4 +1,6 @@
-export async function post({ request }) {
+import type { APIRoute } from "astro";
+
+export const POST: APIRoute = async ({ request }) => {
   const data = await request.json();
 
   const secret = import.meta.env.CAPTCHA_SECRET;
@@ -18,4 +20,4 @@ export async function post({ request }) {
   return new Response(JSON.stringify({ responseData }), {
     status: 200,
   });
-}
+};
