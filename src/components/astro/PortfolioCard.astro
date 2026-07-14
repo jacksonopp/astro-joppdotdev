@@ -1,5 +1,5 @@
 ---
-import Button from "../svelte/Button.svelte";
+import { Icon } from "astro-icon/components";
 import CldImage from "./CldImage.astro";
 
 interface Props {
@@ -12,38 +12,31 @@ interface Props {
 const { imgUrl, alt, title, href } = Astro.props;
 ---
 
-<div class="relative grid place-items-center rounded-lg">
+<a
+  href={href}
+  class="group relative block overflow-hidden rounded-2xl bg-dark-100 shadow-soft transition-shadow duration-300 hover:shadow-card-hover"
+>
   <CldImage
-    class="relative rounded-lg"
+    class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
     src={imgUrl}
     alt={alt}
-    widths={[100, 200, 500]}
+    widths={[400, 800]}
     ratio={[4, 3]}
     medias={["(max-width: 768px)", "(max-width: 1024px)"]}
     fit="fill"
   />
   <div
-    class="absolute grid h-full w-full place-items-center bg-dark-900/70 opacity-0 hover:opacity-100 rounded-lg"
+    class="absolute inset-0 bg-gradient-to-t from-dark-950/85 via-dark-950/10 to-transparent"
   >
-    <div class="bg-white rounded px-16 py-5 flex flex-col items-center gap-4">
-      <p class="font-bold text-lg">{title}</p>
-      <Button link href={href}>
-        <span class="flex gap-2">
-          Learn More <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
-          </svg>
-        </span>
-      </Button>
-    </div>
   </div>
-</div>
+  <div
+    class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-5"
+  >
+    <p class="font-display text-lg font-semibold text-white">{title}</p>
+    <span
+      class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:bg-accent-500"
+    >
+      <Icon name="ph:arrow-up-right-bold" />
+    </span>
+  </div>
+</a>

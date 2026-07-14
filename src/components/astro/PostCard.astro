@@ -1,5 +1,4 @@
 ---
-import Button from "../svelte/Button.svelte";
 import { Icon } from "astro-icon/components";
 import CldImage from "./CldImage.astro";
 interface Props {
@@ -17,18 +16,12 @@ interface Props {
 const { img, title, summary, path, published } = Astro.props;
 ---
 
-<div
-  class="flex max-w-none flex-col items-center gap-2 md:items-start md:gap-4 lg:max-w-sm"
+<article
+  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-dark-200/70 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
 >
-  <a
-    href={path}
-    class="mt-3 text-2xl font-semibold text-primary-900 md:min-h-[4rem] lg:my-[0.5em]"
-  >
-    {title}
-  </a>
-  <figure class="flex flex-col items-center gap-2">
+  <a href={path} class="block overflow-hidden">
     <CldImage
-      class="rounded-lg"
+      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
       src={img.path}
       alt={img.alt}
       width={384}
@@ -36,27 +29,27 @@ const { img, title, summary, path, published } = Astro.props;
       fit="fill"
       gravity="face:center"
     />
-    <figcaption
-      class="prose relative -top-10 w-fit max-w-[90%] rounded bg-white p-2 text-sm shadow-lg lg:-top-5"
+  </a>
+  <div class="flex flex-1 flex-col gap-3 p-6">
+    <p class="text-xs font-semibold uppercase tracking-wide text-dark-400">
+      {published}
+    </p>
+    <a href={path} class="font-display text-xl font-bold text-dark-900 transition-colors hover:text-primary-700">
+      {title}
+    </a>
+    <p class="flex-1 text-dark-600">{summary}</p>
+    <p class="text-xs text-dark-400" set:html={img.credit} />
+    <a
+      href={path}
+      class="mt-2 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
     >
-      <p class="mb-2">Published: {published}</p>
-      <p class="mt-0 text-xs" set:html={img.credit} />
-    </figcaption>
-  </figure>
-
-  <p class="prose">{summary}</p>
-
-  <!-- <div
-    class="bg-dark-200 p-2 rounded w-fit text-sm prose"
-    set:html={img.credit}
-  /> -->
-  <Button link href={path}>
-    <div class="flex gap-2">Read more <Icon name="ph:arrow-right-bold" /></div>
-  </Button>
-</div>
+      Read more <Icon name="ph:arrow-right-bold" />
+    </a>
+  </div>
+</article>
 
 <style>
   [astro-icon] {
-    @apply h-6;
+    @apply h-4 w-4;
   }
 </style>

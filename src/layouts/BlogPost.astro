@@ -8,15 +8,15 @@ const { frontmatter } = Astro.props;
 const { heroSide, title, summary, image } = frontmatter;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} noindex>
   <!-- Hero Section -->
   <BlogHero img={image} summary={summary} title={title} />
-  <div class="px-16 pt-2">
+  <div class="mx-auto max-w-4xl px-8 pt-8 md:px-0">
     <BreadCrumbs />
   </div>
   <!-- Article -->
   <article
-    class="prose mx-auto max-w-lg py-16 px-8 prose-headings:text-primary-900 prose-blockquote:border-accent-500 md:max-w-xl md:px-0 lg:max-w-2xl xl:max-w-4xl"
+    class="prose prose-lg mx-auto max-w-lg py-12 px-8 prose-headings:font-display prose-headings:text-dark-900 prose-a:text-primary-700 prose-blockquote:border-accent-500 prose-img:rounded-2xl prose-img:shadow-card md:max-w-xl md:px-0 lg:max-w-2xl xl:max-w-4xl"
   >
     <slot />
   </article>

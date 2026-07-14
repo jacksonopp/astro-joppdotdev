@@ -1,33 +1,36 @@
 <script lang="ts">
   export let color: "primary" | "accent" = "accent";
+  export let variant: "solid" | "outline" = "solid";
+  export let invert = false;
   export let link = false;
   export let href: string | undefined = undefined;
   $: primary = color === "primary";
+
+  $: classes = [
+    "inline-flex w-fit items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    variant === "solid" && primary
+      ? "bg-primary-700 text-white shadow-soft hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-card focus-visible:outline-primary-600"
+      : "",
+    variant === "solid" && !primary
+      ? "bg-accent-500 text-white shadow-soft hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-card focus-visible:outline-accent-500"
+      : "",
+    variant === "outline" && !invert
+      ? "border border-dark-300 text-dark-900 hover:-translate-y-0.5 hover:border-primary-600 hover:text-primary-700 focus-visible:outline-primary-600"
+      : "",
+    variant === "outline" && invert
+      ? "border border-white/30 text-white hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10 focus-visible:outline-white"
+      : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 </script>
 
 {#if link}
-  <!-- content here -->
-  <a
-    {href}
-    class="px-6 py-4 rounded-lg hover:shadow-[inset_20em_0_0_0] duration-[400ms,700ms] transition-[box-shadow] w-fit"
-    class:bg-primary-800={primary}
-    class:text-white={primary}
-    class:hover:shadow-primary-700={primary}
-    class:bg-accent-500={!primary}
-    class:hover:shadow-accent-700={!primary}
-  >
+  <a {href} class={classes}>
     <slot />
   </a>
 {:else}
-  <!-- else content here -->
-  <button
-    class="px-6 py-4 rounded-lg hover:shadow-[inset_20em_0_0_0] duration-[400ms,700ms] transition-[box-shadow] w-fit"
-    class:bg-primary-800={primary}
-    class:text-white={primary}
-    class:hover:shadow-primary-700={primary}
-    class:bg-accent-500={!primary}
-    class:hover:shadow-accent-700={!primary}
-  >
+  <button class={classes}>
     <slot />
   </button>
 {/if}

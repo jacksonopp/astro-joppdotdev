@@ -7,60 +7,76 @@ import Button from "../svelte/Button.svelte";
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <div class="grid bg-dark-800 p-8 text-white sm:grid-cols-2 lg:grid-cols-3">
-    <div class=" max-w-xs">
-      <SectionTitle offset theme="accent" dark>About</SectionTitle>
+<footer class="bg-dark-950 text-white">
+  <div
+    class="mx-auto grid max-w-6xl gap-12 px-8 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.7fr_1fr] lg:px-16"
+  >
+    <div class="max-w-sm">
       <img
         src="/logos/orange-virt.svg"
         alt="jopp dot dev logo"
-        width="150"
-        height="150"
+        width="72"
+        height="72"
+        class="mb-6"
       />
-      <div class="flex flex-col gap-6">
-        <p class="prose prose-invert">
-          Jackson is a UX Developer and Web Designer in Minneapolis, MN that
-          creates amazing user experiences, and super affordable websites for
-          small businesses and non-profits.
-        </p>
+      <p class="text-dark-300">
+        Jackson is a UX developer and web designer based in Minneapolis, MN,
+        building thoughtful user experiences and affordable websites for
+        small businesses and non-profits.
+      </p>
+      <div class="mt-6">
         <Button link href="/contact">Get in touch</Button>
       </div>
     </div>
     <nav aria-label="Footer">
       <SectionTitle offset theme="accent" dark>Links</SectionTitle>
-      <ul>
+      <ul class="flex flex-col gap-3 text-dark-300">
         <li>
-          <a class="hover:underline" href="/">Home</a>
+          <a class="transition-colors hover:text-white" href="/">Home</a>
         </li>
         <li>
-          <a class="hover:underline" href="/about">About</a>
+          <a class="transition-colors hover:text-white" href="/about">About</a
+          >
         </li>
         <li>
-          <a class="hover:underline" href="/portfolio">Portfolio</a>
+          <a class="transition-colors hover:text-white" href="/portfolio"
+            >Portfolio</a
+          >
         </li>
         <li>
-          <a class="hover:underline" href="/blog">Blog</a>
-        </li>
-        <li>
-          <a class="hover:underline" href="/contact">Contact</a>
+          <a class="transition-colors hover:text-white" href="/contact"
+            >Contact</a
+          >
         </li>
       </ul>
     </nav>
     <div class="flex flex-col gap-8">
       <div>
         <SectionTitle offset theme="accent" dark>Contact Me</SectionTitle>
-        <ul class="prose prose-invert">
-          <li><b>Phone:</b> <a href="tel:+14406656551">440.665.6551</a></li>
-          <li><b>Email:</b> <a href="mailto:me@jopp.dev">me@jopp.dev</a></li>
+        <ul class="flex flex-col gap-2 text-dark-300">
+          <li>
+            <span class="text-dark-500">Phone:</span>
+            <a class="transition-colors hover:text-white" href="tel:+14406656551"
+              >440.665.6551</a
+            >
+          </li>
+          <li>
+            <span class="text-dark-500">Email:</span>
+            <a
+              class="transition-colors hover:text-white"
+              href="mailto:me@jopp.dev">me@jopp.dev</a
+            >
+          </li>
         </ul>
       </div>
       <div>
         <SectionTitle offset theme="accent" dark>Socials</SectionTitle>
-        <div class="flex">
+        <div class="flex gap-3">
           <a
             href="https://www.linkedin.com/in/jacksonopp/"
             target="_blank"
-            class="hover:text-blue-400"
+            aria-label="LinkedIn"
+            class="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-dark-300 transition-colors hover:border-accent-400/50 hover:text-accent-400"
           >
             <Icon name="mdi:linkedin" />
             <span class="sr-only">Linkedin</span>
@@ -68,7 +84,8 @@ const year = new Date().getFullYear();
           <a
             href="https://github.com/jacksonopp"
             target="_blank"
-            class="hover:text-blue-400"
+            aria-label="GitHub"
+            class="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-dark-300 transition-colors hover:border-accent-400/50 hover:text-accent-400"
           >
             <Icon name="mdi:github" />
             <span class="sr-only">Github</span>
@@ -77,13 +94,17 @@ const year = new Date().getFullYear();
       </div>
     </div>
   </div>
-  <div class="bg-dark-900 p-8 text-white sm:col-span-2 lg:col-span-3">
-    <div>&copy; {year} | Jackson Oppenheim</div>
+  <div class="border-t border-white/10">
+    <div
+      class="mx-auto max-w-6xl px-8 py-6 text-sm text-dark-400 lg:px-16"
+    >
+      &copy; {year} Jackson Oppenheim
+    </div>
   </div>
 </footer>
 
 <style>
   [astro-icon] {
-    @apply h-12 w-12;
+    @apply h-5 w-5;
   }
 </style>

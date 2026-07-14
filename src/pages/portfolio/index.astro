@@ -12,37 +12,29 @@ if (!portfolioHero) throw new Error("Portfolio hero content not found");
 
 <Layout title="Portfolio | Jackson Oppenheim">
   <Hero heroContent={portfolioHero} />
-  <main class="px-8">
-    <article
-      class="flex max-w-none flex-col-reverse items-center justify-center gap-12 pt-8 pb-16 md:px-0 lg:flex-row"
-    >
-      <section class="flex flex-col pt-8 pb-16 md:px-0" aria-labelledby="apps">
-        <SectionTitle offset id="apps">Applications</SectionTitle>
-        <div class="grid grid-cols-3 gap-6">
-          <PortfolioCard
-            href="portfolio/virtuwell"
-            imgUrl="portfolio/portfolio/virtuwell"
-            alt="virtuwell"
-            title="Virtuwell"
-          />
-          <PortfolioCard
-            href="portfolio/onvue"
-            imgUrl="portfolio/portfolio/onvue"
-            alt="onvue"
-            title="OnVUE"
-          />
-          <PortfolioCard
-            href="portfolio/topaz"
-            imgUrl="portfolio/portfolio/topaz"
-            alt="topaz"
-            title="Topaz Design System"
-          />
-        </div>
-      </section>
-      <!-- Virtuwell -->
-      <!-- OnVUE -->
-      <!-- Topaz -->
-      <!--  -->
-    </article>
+  <main class="mx-auto max-w-6xl px-8 py-16 md:py-24">
+    <section aria-labelledby="apps">
+      <SectionTitle id="apps">Applications</SectionTitle>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <PortfolioCard
+          href="portfolio/virtuwell"
+          imgUrl="portfolio/portfolio/virtuwell"
+          alt="virtuwell"
+          title="Virtuwell"
+        />
+        <PortfolioCard
+          href="portfolio/onvue"
+          imgUrl="portfolio/portfolio/onvue"
+          alt="onvue"
+          title="OnVUE"
+        />
+        <PortfolioCard
+          href="portfolio/topaz"
+          imgUrl="portfolio/portfolio/topaz"
+          alt="topaz"
+          title="Topaz Design System"
+        />
+      </div>
+    </section>
   </main>
 </Layout>
