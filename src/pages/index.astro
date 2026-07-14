@@ -11,7 +11,7 @@ import PortfolioCard from "../components/astro/PortfolioCard.astro";
 const hero = await getEntry("hero", "hompage");
 if (!hero) throw new Error("Homepage hero content not found");
 
-const industries = ["Healthcare", "E-commerce", "Education"];
+const industries = ["Healthcare", "Finance", "Nonprofit"];
 ---
 
 <Layout title="Jackson Oppenheim, UX Developer">
@@ -40,7 +40,7 @@ const industries = ["Healthcare", "E-commerce", "Education"];
               class="absolute -bottom-6 -right-6 hidden w-36 rounded-2xl border border-dark-100 bg-white p-4 shadow-card sm:block"
             >
               <p class="font-display text-3xl font-bold text-primary-700">
-                5+
+                7+
               </p>
               <p
                 class="text-xs font-semibold uppercase tracking-wide text-dark-500"
@@ -55,28 +55,33 @@ const industries = ["Healthcare", "E-commerce", "Education"];
           <h3
             class="font-display text-3xl font-bold text-dark-900 md:text-4xl"
           >
-            Five Years of Building for Real Users
+            Seven Years of Building — and Rebuilding — for Real Users
           </h3>
           <div class="grid gap-5 text-dark-600">
             <p>
-              I've spent the last five years working across healthcare,
-              e-commerce, and education — three industries where a confusing
-              interface has real consequences, not just a bad review. That's
-              shaped how I think about UX: less about surface polish, more
-              about whether someone can actually get what they came for.
+              I've spent the last seven years leading front-end teams and CMS
+              migrations — moving Virtuwell's marketing site off static HTML
+              onto Contentful, taking Open Source North's conference site
+              from WordPress to Strapi and Astro, and currently leading a
+              Fortune 500 finance client's move off a struggling third-party
+              CMS onto Payload. Healthcare, nonprofit, and enterprise finance
+              are different worlds, but the same problem keeps showing up: a
+              content workflow that's fighting the people who have to use it
+              every day.
             </p>
             <p>
-              I stay close to how people actually use the products I build —
-              through research, testing, and just paying attention to where
-              things break down — rather than relying on trends or
-              best-practice checklists alone.
+              That same thinking carries over to the products I've built
+              outright, like ClearPoint Health's suite of internal portals —
+              setting the architecture, establishing the patterns a team
+              builds against, and mentoring the developers who have to live
+              in the codebase after I've moved on.
             </p>
             <p>
-              The best interfaces I've worked on came out of close
-              collaboration with designers, engineers, and stakeholders, not
-              from any one person working in isolation. I try to be the one on
-              the team who keeps that conversation grounded in what users
-              actually need.
+              The best migrations and interfaces I've worked on came out of
+              close collaboration with designers, engineers, and
+              stakeholders — and increasingly, the other enterprise systems a
+              project has to plug into — not from any one person or one CMS
+              working in isolation.
             </p>
           </div>
           <ul class="flex flex-wrap gap-2 border-t border-dark-100 pt-6">
