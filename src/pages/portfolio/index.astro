@@ -15,8 +15,10 @@ if (!portfolioHero) throw new Error("Portfolio hero content not found");
   <main class="mx-auto max-w-6xl px-8 py-16 md:py-24">
     <section aria-labelledby="apps">
       <SectionTitle id="apps">Applications</SectionTitle>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-6 lg:grid-cols-3">
         <PortfolioCard
+          class="lg:col-span-2 lg:row-span-2"
+          imgClass="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-80 lg:h-full"
           href="portfolio/virtuwell"
           imgUrl="portfolio/portfolio/virtuwell"
           alt="virtuwell"
