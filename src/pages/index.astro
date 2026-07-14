@@ -3,119 +3,202 @@ import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
 
-import ThreeColumn from "../layouts/ThreeColumn.astro";
-// import computerPng from "../images/computer.png";
-// import pearsonLogo from "../images/pearson-logo.png";
-// import sdgLogo from "../images/sdg_Logo-1.png";
-// import onvueLogo from "../images/onvue-logo-color.png";
-// import virtuwellLogo from "../images/virtuwell-nohp.png";
-// import hpLogo from "../images/hp-logo.png";
 import SectionTitle from "../components/svelte/SectionTitle.svelte";
-import Contact from "../components/astro/Contact.astro";
+import ContactSection from "../components/astro/ContactSection.astro";
 import CldImage from "../components/astro/CldImage.astro";
+import PortfolioCard from "../components/astro/PortfolioCard.astro";
 
 const hero = await getEntry("hero", "hompage");
 if (!hero) throw new Error("Homepage hero content not found");
+
+const industries = ["Healthcare", "E-commerce", "Education"];
 ---
 
 <Layout title="Jackson Oppenheim, UX Developer">
   <main>
     <Hero heroContent={hero} cta twoColumns={true} />
 
-    <ThreeColumn title="About Me" id="about-me">
-      <div slot="col1" class="prose prose-slate">
-        <h3 class="font-display mb-[0.5em] text-3xl font-bold text-dark-900">
-          Five Years of Building for Real Users
-        </h3>
-        <p>
-          I've spent the last five years working across healthcare,
-          e-commerce, and education — three industries where a confusing
-          interface has real consequences, not just a bad review. That's
-          shaped how I think about UX: less about surface polish, more about
-          whether someone can actually get what they came for.
-        </p>
-      </div>
+    <section
+      aria-labelledby="about-me"
+      class="mx-auto max-w-6xl px-8 py-20 md:px-16 md:py-28"
+    >
+      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div class="lg:sticky lg:top-28 lg:self-start">
+          <SectionTitle id="about-me">About Me</SectionTitle>
+          <div class="relative mt-2 max-w-sm">
+            <CldImage
+              class="w-full rounded-2xl shadow-card"
+              src="portfolio/images/IMG_1630_ahx0ak"
+              width={400}
+              alt="Jackson Oppenheim"
+              fit="thumb"
+              zoom="0.2"
+              ratio={[4, 5]}
+              gravity="face"
+            />
+            <div
+              class="absolute -bottom-6 -right-6 hidden w-36 rounded-2xl border border-dark-100 bg-white p-4 shadow-card sm:block"
+            >
+              <p class="font-display text-3xl font-bold text-primary-700">
+                5+
+              </p>
+              <p
+                class="text-xs font-semibold uppercase tracking-wide text-dark-500"
+              >
+                Years building for real users
+              </p>
+            </div>
+          </div>
+        </div>
 
-      <CldImage
-        class="rounded-2xl shadow-card"
-        src="portfolio/images/IMG_1630_ahx0ak"
-        width={400}
-        alt="alt"
-        slot="col2"
-        fit="thumb"
-        zoom="0.2"
-        ratio={[4, 3]}
-        gravity="face"
-      />
-      <div slot="col3" class="prose">
-        <p>
-          I stay close to how people actually use the products I build —
-          through research, testing, and just paying attention to where
-          things break down — rather than relying on trends or best-practice
-          checklists alone.
-        </p>
-        <p>
-          The best interfaces I've worked on came out of close collaboration
-          with designers, engineers, and stakeholders, not from any one
-          person working in isolation. I try to be the one on the team who
-          keeps that conversation grounded in what users actually need.
-        </p>
+        <div class="grid gap-8 lg:pt-14">
+          <h3
+            class="font-display text-3xl font-bold text-dark-900 md:text-4xl"
+          >
+            Five Years of Building for Real Users
+          </h3>
+          <div class="grid gap-5 text-dark-600">
+            <p>
+              I've spent the last five years working across healthcare,
+              e-commerce, and education — three industries where a confusing
+              interface has real consequences, not just a bad review. That's
+              shaped how I think about UX: less about surface polish, more
+              about whether someone can actually get what they came for.
+            </p>
+            <p>
+              I stay close to how people actually use the products I build —
+              through research, testing, and just paying attention to where
+              things break down — rather than relying on trends or
+              best-practice checklists alone.
+            </p>
+            <p>
+              The best interfaces I've worked on came out of close
+              collaboration with designers, engineers, and stakeholders, not
+              from any one person working in isolation. I try to be the one on
+              the team who keeps that conversation grounded in what users
+              actually need.
+            </p>
+          </div>
+          <ul class="flex flex-wrap gap-2 border-t border-dark-100 pt-6">
+            {
+              industries.map((industry) => (
+                <li class="rounded-full bg-primary-50 px-4 py-1.5 text-sm font-semibold text-primary-800">
+                  {industry}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
-    </ThreeColumn>
-    <section aria-label="companies" class="border-y border-dark-100 bg-dark-50">
-      <div class="mx-auto max-w-6xl px-8 pt-12 md:px-16">
-        <SectionTitle>Companies I've Worked With</SectionTitle>
+    </section>
+
+    <section
+      aria-labelledby="work"
+      class="border-y border-dark-100 bg-dark-50"
+    >
+      <div class="mx-auto max-w-6xl px-8 py-20 md:px-16 md:py-28">
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <SectionTitle id="work">Selected Work</SectionTitle>
+          <a
+            href="/portfolio"
+            class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 transition-colors hover:text-primary-800"
+          >
+            View all work
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2">
+          <PortfolioCard
+            class="lg:row-span-2"
+            imgClass="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-72 lg:h-full"
+            href="portfolio/virtuwell"
+            imgUrl="portfolio/portfolio/virtuwell"
+            alt="virtuwell"
+            title="Virtuwell"
+          />
+          <PortfolioCard
+            href="portfolio/onvue"
+            imgUrl="portfolio/portfolio/onvue"
+            alt="onvue"
+            title="OnVUE"
+          />
+          <PortfolioCard
+            href="portfolio/topaz"
+            imgUrl="portfolio/portfolio/topaz"
+            alt="topaz"
+            title="Topaz Design System"
+          />
+        </div>
       </div>
+    </section>
+
+    <section aria-label="companies" class="mx-auto max-w-6xl px-8 py-16 md:px-16">
+      <SectionTitle>Companies I've Worked With</SectionTitle>
       <div
-        class="mx-auto flex max-w-6xl flex-wrap items-center justify-evenly gap-x-12 gap-y-8 px-8 pb-12 pt-4 lg:flex-row lg:px-16 lg:pb-16"
+        class="flex flex-wrap items-center gap-x-12 gap-y-8 pt-4 lg:flex-nowrap lg:justify-between"
       >
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/pearson-logo"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/onvue-logo-color"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/sdg-logo"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/osn_logo_mdmftc"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/new_vw_logo_scgdnb"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
         <CldImage
           class="opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
           src="portfolio/logos/hp-logo_rtwde9"
-          height={60}
+          height={48}
           alt="alt"
           fit="fit"
         />
       </div>
     </section>
-    <section class="mx-auto max-w-4xl px-8 py-16 md:px-16 md:py-24" aria-labelledby="contact">
-      <SectionTitle id="contact">Contact Me</SectionTitle>
-      <Contact />
+
+    <section
+      class="mx-auto max-w-6xl px-8 py-16 md:px-16 md:py-24"
+      aria-labelledby="contact"
+    >
+      <ContactSection />
     </section>
   </main>
 </Layout>

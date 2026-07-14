@@ -2,8 +2,7 @@
 import { getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/astro/Hero.astro";
-import ContactForm from "../components/astro/Contact.astro";
-import { z } from "astro:content";
+import ContactSection from "../components/astro/ContactSection.astro";
 
 const contactHero = await getEntry("hero", "contact");
 if (!contactHero) throw new Error("Contact hero content not found");
@@ -11,7 +10,10 @@ if (!contactHero) throw new Error("Contact hero content not found");
 
 <Layout title="Contact Me | Jackson Oppenheim">
   <Hero heroContent={contactHero} />
-  <main class="mx-auto px-8 py-16 lg:max-w-3xl lg:py-24">
-    <ContactForm />
+  <main class="mx-auto max-w-6xl px-8 py-16 md:px-16 md:py-24">
+    <ContactSection
+      heading="Let's talk"
+      description="Fill out the form and I'll get back to you within a day or two — or reach out directly."
+    />
   </main>
 </Layout>
