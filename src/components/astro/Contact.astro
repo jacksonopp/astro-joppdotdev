@@ -90,7 +90,7 @@ if (Astro.request.method === "POST") {
   )
 }
 <form
-  class="grid gap-x-8 gap-y-6 md:grid-cols-3"
+  class="grid gap-x-6 gap-y-6 sm:grid-cols-2"
   method="post"
   id="contact-form"
 >
@@ -137,7 +137,7 @@ if (Astro.request.method === "POST") {
       placeholder="me@example.com"
     />
   </div>
-  <div class="grid gap-2">
+  <div class="grid gap-2 sm:col-span-2">
     <label
       for="phone"
       class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
@@ -148,11 +148,11 @@ if (Astro.request.method === "POST") {
       type="tel"
       name="phone"
       id="phone"
-      class="rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 invalid:required:border-dark-200 invalid:required:ring-0"
+      class="w-full rounded-xl border border-dark-200 bg-white p-3 text-dark-900 placeholder:text-dark-400 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 invalid:required:border-dark-200 invalid:required:ring-0 sm:max-w-xs"
       placeholder="555-555-5555"
     />
   </div>
-  <div class="grid gap-2 md:col-span-3">
+  <div class="grid gap-2 sm:col-span-2">
     <label
       for="message"
       class="text-xs font-bold uppercase tracking-wide text-dark-500 after:ml-0.5 after:text-accent-500 after:content-[attr(data-after)]"
