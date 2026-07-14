@@ -1,0 +1,21 @@
+---
+title: Enterprise CMS Migration
+
+layout: ../../layouts/PortfolioPage.astro
+---
+
+import PlaceholderImage from "../../components/astro/PlaceholderImage.astro";
+
+# Enterprise CMS Migration
+
+I'm currently a senior developer on an ongoing project migrating a Fortune 500 finance company's site off a third-party vendor CMS they'd been struggling with, onto Payload, a self-hosted open-source CMS. Details are under NDA, so this entry stays intentionally general.
+
+<PlaceholderImage label="Screenshot coming soon" />
+
+## The Work
+
+This isn't a standalone rebuild — it's a migration into a large enterprise ecosystem. That means provisioning the new site itself, but also wiring it into a federated GraphQL graph shared across other internal systems and into the company's compliance workflow tooling, so content changes still satisfy the same review and approval requirements the organization already relies on.
+
+## What Makes It Hard
+
+The complexity here isn't in any single piece — it's in how many systems have to agree with each other at once. Getting the CMS, the graph, and the compliance workflows to work together cleanly, without regressing behavior any of them already depend on, has been the core challenge of the project.

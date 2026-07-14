@@ -1,9 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import CldImage from "./CldImage.astro";
+import PlaceholderImage from "./PlaceholderImage.astro";
 
 interface Props {
-  imgUrl: string;
+  imgUrl?: string;
+  placeholderLabel?: string;
+  placeholderIcon?: string;
   alt: string;
   title: string;
   href: string;
@@ -13,6 +16,8 @@ interface Props {
 
 const {
   imgUrl,
+  placeholderLabel,
+  placeholderIcon,
   alt,
   title,
   href,
@@ -25,15 +30,25 @@ const {
   href={href}
   class={`group relative block h-full overflow-hidden rounded-2xl bg-dark-100 shadow-soft transition-shadow duration-300 hover:shadow-card-hover ${className}`}
 >
-  <CldImage
-    class={imgClass}
-    src={imgUrl}
-    alt={alt}
-    widths={[400, 800]}
-    ratio={[4, 3]}
-    medias={["(max-width: 768px)", "(max-width: 1024px)"]}
-    fit="fill"
-  />
+  {
+    imgUrl ? (
+      <CldImage
+        class={imgClass}
+        src={imgUrl}
+        alt={alt}
+        widths={[400, 800]}
+        ratio={[4, 3]}
+        medias={["(max-width: 768px)", "(max-width: 1024px)"]}
+        fit="fill"
+      />
+    ) : (
+      <PlaceholderImage
+        class={imgClass}
+        label={placeholderLabel}
+        icon={placeholderIcon}
+      />
+    )
+  }
   <div
     class="absolute inset-0 bg-gradient-to-t from-dark-950/85 via-dark-950/10 to-transparent"
   >

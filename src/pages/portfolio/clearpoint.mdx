@@ -1,0 +1,30 @@
+---
+title: ClearPoint Health
+
+layout: ../../layouts/PortfolioPage.astro
+---
+
+import PlaceholderImage from "../../components/astro/PlaceholderImage.astro";
+
+# ClearPoint Health
+
+ClearPoint Health is a health insurance startup focused on small and medium-sized businesses. As a lead developer there, I led front-end architecture across a team of five developers, part of a broader engineering team that peaked at ten, building out several in-house portals on Angular and .NET.
+
+<PlaceholderImage label="Internal tool — not publicly viewable" icon="ph:lock-key-duotone" />
+
+## The Portals
+
+- **ClearQuote** — a portal for managing small and medium-sized business health insurance RFPs.
+- **BA Portal** — a tool for brokers and agents to build out RFPs for their clients.
+- **ClearConcierge** — a portal for managing policies and running the year-end and quarterly business reviews between ClearPoint's policy administrators and their clients.
+- **Admin Portal** — the internal tool that ran everything else.
+
+## Admin Portal
+
+The Admin Portal was the backbone for the other portals rather than a customer-facing product itself. It handled provisioning BA and ClearQuote instances for different tenants — ClearPoint's intent was to turn both into a multi-tenant SaaS offering, so tenant setup had to be a repeatable, self-service admin flow rather than a one-off engineering task per client.
+
+It also housed the tooling for training the model that converted census formats — the employee-roster spreadsheets brokers submit in wildly inconsistent layouts — into a normalized format the rest of the system could actually work with, plus a long tail of other admin tasks: user and permissions management, data corrections, and support tooling for the ops team.
+
+## My Role
+
+I led the front-end for a five-developer team within the larger engineering org, which meant setting the architecture, establishing the patterns the rest of the team built against, and mentoring junior developers as they came up to speed on Angular. With four portals built for four fairly different audiences — RFP managers, brokers, policy administrators, and internal admins — consistent architecture was what kept the codebase from splintering into unrelated apps.

@@ -13,16 +13,41 @@ if (!portfolioHero) throw new Error("Portfolio hero content not found");
 <Layout title="Portfolio | Jackson Oppenheim">
   <Hero heroContent={portfolioHero} />
   <main class="mx-auto max-w-6xl px-8 py-16 md:py-24">
-    <section aria-labelledby="apps">
-      <SectionTitle id="apps">Applications</SectionTitle>
+    <section aria-labelledby="cms-migrations">
+      <SectionTitle id="cms-migrations">CMS Migrations</SectionTitle>
       <div class="grid gap-6 lg:grid-cols-3">
         <PortfolioCard
           class="lg:col-span-2 lg:row-span-2"
           imgClass="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-80 lg:h-full"
+          href="portfolio/enterprise-cms-migration"
+          alt="Enterprise CMS Migration"
+          title="Enterprise CMS Migration"
+          placeholderLabel="Screenshot coming soon"
+        />
+        <PortfolioCard
+          href="portfolio/osn"
+          alt="Open Source North"
+          title="Open Source North"
+          placeholderLabel="Screenshot coming soon"
+        />
+        <PortfolioCard
           href="portfolio/virtuwell"
           imgUrl="portfolio/portfolio/virtuwell"
           alt="virtuwell"
           title="Virtuwell"
+        />
+      </div>
+    </section>
+
+    <section aria-labelledby="apps" class="mt-16 md:mt-20">
+      <SectionTitle id="apps" theme="accent">Applications</SectionTitle>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <PortfolioCard
+          href="portfolio/clearpoint"
+          alt="ClearPoint Health"
+          title="ClearPoint Health"
+          placeholderLabel="Internal tool — not publicly viewable"
+          placeholderIcon="ph:lock-key-duotone"
         />
         <PortfolioCard
           href="portfolio/onvue"
@@ -30,7 +55,14 @@ if (!portfolioHero) throw new Error("Portfolio hero content not found");
           alt="onvue"
           title="OnVUE"
         />
+      </div>
+    </section>
+
+    <section aria-labelledby="design-systems" class="mt-16 md:mt-20">
+      <SectionTitle id="design-systems">Design Systems</SectionTitle>
+      <div class="grid gap-6">
         <PortfolioCard
+          imgClass="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-80"
           href="portfolio/topaz"
           imgUrl="portfolio/portfolio/topaz"
           alt="topaz"
